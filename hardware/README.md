@@ -1,51 +1,64 @@
-# Hardware - Documentación
+# Hardware – AquaSafe
 
-## Contenido
-Esta carpeta contiene toda la documentación técnica del hardware del proyecto.
+## Descripción del proyecto
 
-### 📁 Carpetas
+AquaSafe es un sistema electrónico de monitoreo de parámetros del agua, desarrollado mediante un microcontrolador ESP32.
 
-#### `esquemas/`
-Diagramas de circuitos y esquemáticos del sistema
+El sistema utiliza sensores para obtener mediciones y un semáforo de LEDs para indicar el estado de los parámetros analizados.
 
-#### `bom/`
-Bill of Materials (Lista de materiales)
+Como mejora solicitada por el profesor, se incorporará una **pantalla de visualización que permita consultar las mediciones directamente desde el dispositivo**, sin necesidad de conectar un computador.
 
-#### `fotos/`
-Fotografías de alta resolución del prototipo ensamblado
+## Componentes
 
----
+- ESP32 Dev Module.
+- Sensor de temperatura DS18B20.
+- Sensor de pH con módulo PH-4502C.
+- Sensor de turbidez.
+- Sensor TDS (integración pendiente).
+- Tres LEDs: verde, amarillo y rojo.
+- Pantalla de visualización (pendiente de integración).
+- Protoboard.
+- Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω.
+- Cables Dupont.
 
-## Instrucciones de Ensamble
+## Conexiones del ESP32
 
-### Componentes Principales
-1. [Componente 1] - Función
-2. [Componente 2] - Función
-3. [Componente 3] - Función
+| Componente | Pin ESP32 |
+|---|---|
+| Temperatura DS18B20 | GPIO 21 |
+| Sensor de pH | GPIO 32 |
+| Sensor de turbidez | GPIO 34 |
+| Sensor TDS (pendiente) | GPIO 33 |
+| LED verde | GPIO 16 |
+| LED amarillo | GPIO 17 |
+| LED rojo | GPIO 18 |
+| Pantalla | Por definir |
 
-### Pasos de Ensamblaje
-1. [Paso 1]
-2. [Paso 2]
-3. [Paso 3]
+## Alimentación y conexiones
 
-### Precauciones
-- ⚠️ [Precaución 1]
-- ⚠️ [Precaución 2]
+- DS18B20 alimentado con 3,3 V.
+- Módulos de pH y turbidez alimentados con 5 V.
+- Tierra GND compartida.
+- Resistencia pull-up de 4,7 kΩ para el sensor DS18B20.
+- Divisores resistivos para proteger las entradas analógicas del ESP32.
+- Resistencias limitadoras de corriente para los LEDs.
 
----
+## Pantalla de visualización — Pendiente
 
-## Especificaciones Técnicas
+Por recomendación del profesor, se integrará una pantalla al prototipo AquaSafe.
 
-**Alimentación:** [Voltaje y corriente]  
-**Consumo:** [Watts/mA]  
-**Dimensiones:** [mm x mm x mm]  
-**Peso:** [gramos]
+**Su objetivo es mostrar en tiempo real:**
 
----
+- Temperatura del agua (°C).
+- Nivel de pH.
+- Turbidez del agua.
+- Concentración de sólidos disueltos (TDS), cuando se integre el sensor.
+- Estado general del sistema, representado mediante el semáforo verde, amarillo o rojo.
+- Advertencias de sensores desconectados o pendientes de calibración.
 
-## Troubleshooting
+El modelo de pantalla y sus conexiones eléctricas todavía están por definir.
 
-| Problema | Posible Causa | Solución |
-|----------|---------------|----------|
-| [Problema 1] | [Causa] | [Solución] |
-| [Problema 2] | [Causa] | [Solución] |
+## Estado actual del proyecto
+
+**Implementado o probado:**
+- Montaje del ESP32 en

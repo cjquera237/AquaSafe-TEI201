@@ -1,38 +1,11 @@
-# Bill of Materials (BOM)
+# Datasheets pendientes - AquaSafe (TEI201)
 
-## Formato del Archivo
+Se deben subir fichas tecnicas PDF de componentes criticos antes de la entrega.
 
-El archivo BOM debe incluir las siguientes columnas:
+- ESP32 WROOM-32 (verificar revision/modulo exacto): https://documentation.espressif.com/esp32-wroom-32_datasheet_en.html
+- DS18B20: https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf
+- Modulo sensor de pH: solicitar hoja tecnica al proveedor, modelo exacto pendiente.
+- Modulo turbidez: solicitar hoja tecnica al proveedor, modelo exacto pendiente.
+- Pantalla y TDS: adjuntar hojas tecnicas cuando se definan modelos.
 
-| Columna | Descripción | Ejemplo |
-|---------|-------------|---------|
-| Cantidad | Número de unidades | 1 |
-| Componente | Nombre descriptivo | ESP32 DevKit V1 |
-| Especificación | Detalles técnicos | 30 pines, WiFi+BT |
-| Fabricante | Marca del componente | Espressif |
-| Código/SKU | Identificador único | ESP32-WROOM-32 |
-| Proveedor | Tienda/distribuidor | AliExpress, MercadoLibre |
-| Precio Unitario | Costo por unidad (CLP) | $8,990 |
-| Precio Total | Cantidad × Precio | $8,990 |
-| Datasheet | Link a especificaciones | [URL] |
-
----
-
-## Archivos a Incluir
-
-- `bom_completo.xlsx` - Lista completa de materiales
-- `bom_completo.pdf` - Versión PDF para visualización
-- `datasheets/` - Carpeta con PDFs de componentes críticos
-
----
-
-## Presupuesto Total
-
-**Costo Total Estimado:** $[XXXXX] CLP
-
-### Desglose por Categoría
-- Microcontrolador: $X,XXX
-- Sensores: $X,XXX
-- Actuadores: $X,XXX
-- Estructura/Encapsulado: $X,XXX
-- Otros: $X,XXX
+Los comprobantes de compra no deben publicarse en un repositorio publico: pueden contener informacion personal.

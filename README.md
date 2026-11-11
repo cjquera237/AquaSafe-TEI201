@@ -66,7 +66,6 @@ El funcionamiento previsto de AquaSafe consiste en:
 2. El ESP32 recibe las señales de los sensores.
 3. El programa procesa los datos utilizando las calibraciones correspondientes.
 4. La pantalla muestra los parámetros medidos.
-5. Los LEDs indican el estado general de las mediciones.
 
 ### Pantalla de Visualización
 
@@ -77,21 +76,12 @@ La pantalla mostrará:
 - Temperatura del agua (°C).
 - Nivel de pH.
 - Turbidez del agua.
-- Sólidos disueltos totales (TDS).
 - Estado general de los parámetros.
 - Advertencias de errores o sensores sin calibrar.
 
 La selección del modelo, sus conexiones y su programación se encuentran pendientes de implementación.
 
-### Semáforo de LEDs
 
-El sistema contempla tres indicadores luminosos:
-
-- **Verde:** Mediciones dentro de los rangos configurados.
-- **Amarillo:** Precaución, desviaciones moderadas o calibración pendiente.
-- **Rojo:** Mediciones fuera de los límites configurados o errores críticos.
-
-Los umbrales actuales son demostrativos y requieren validación experimental.
 
 **Importante:** AquaSafe permite monitorear algunos parámetros fisicoquímicos, pero no certifica la potabilidad del agua ni detecta todos los posibles contaminantes.
 
@@ -100,7 +90,7 @@ Los umbrales actuales son demostrativos y requieren validación experimental.
 ## 3. Estado del Proyecto
 
 - **Versión actual:** Prototipo en desarrollo.
-- **Última actualización:** 27 de octubre de 2026.
+- **Última actualización:** 11 de noviembre de 2026.
 - **Estado:** Montaje electrónico parcialmente funcional, con integraciones y validaciones pendientes.
 
 ### Avances Realizados
@@ -110,7 +100,6 @@ Los umbrales actuales son demostrativos y requieren validación experimental.
 - Conexión del sensor de pH.
 - Conexión del sensor de turbidez.
 - Obtención de lecturas mediante Arduino IDE.
-- Implementación del semáforo de LEDs.
 - Desarrollo de código Arduino para el monitoreo.
 - Incorporación de funciones de calibración en el programa.
 - Documentación de componentes y conexiones.
@@ -119,7 +108,6 @@ Los umbrales actuales son demostrativos y requieren validación experimental.
 
 ### Desarrollo Pendiente
 
-- Integración del sensor TDS.
 - Selección de una pantalla compatible con ESP32.
 - Conexión y programación de la pantalla.
 - Calibración experimental de pH y turbidez.
@@ -183,9 +171,7 @@ AquaSafe-TEI201/
 - Sensor DS18B20.
 - Sensor de pH PH-4502C.
 - Sensor de turbidez.
-- Sensor TDS (pendiente).
-- Pantalla de visualización (pendiente).
-- LEDs rojo, amarillo y verde.
+- Pantalla de visualización.
 - Resistencias eléctricas.
 - Protoboard.
 - Cables Dupont.
@@ -232,10 +218,10 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 | DS18B20 | Medición de temperatura |
 | PH-4502C | Obtención de señal para estimar pH |
 | Sensor de turbidez | Detección óptica de turbidez |
-| Sensor TDS | Medición de sólidos disueltos |
 | Pantalla | Visualización de parámetros |
-| LEDs | Alertas visuales |
 | Protoboard | Montaje del prototipo |
+| Power bank | Alimentación componentes| 
+
 
 ### Conexiones Actuales
 
@@ -244,10 +230,6 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 | Temperatura DS18B20 | GPIO 21 |
 | Sensor de pH | GPIO 32 |
 | Turbidez | GPIO 34 |
-| TDS (reservado) | GPIO 33 |
-| LED verde | GPIO 16 |
-| LED amarillo | GPIO 17 |
-| LED rojo | GPIO 18 |
 | Pantalla | Pendiente de definir |
 
 ### Alimentación
@@ -258,7 +240,6 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 - Tierra común (GND).
 - Resistencia pull-up de 4,7 kΩ para el DS18B20.
 - Divisores resistivos para las entradas analógicas de pH y turbidez.
-- Resistencias limitadoras de corriente para los LEDs.
 
 La documentación se encuentra en `hardware/`.
 

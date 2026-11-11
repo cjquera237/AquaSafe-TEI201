@@ -29,7 +29,7 @@ Responsable de la organización de la documentación técnica, elaboración de i
 
 ### ODS Seleccionado
 
-**ODS 6 – Agua limpia y saneamiento (propuesto).**
+**ODS 6 – Agua limpia y saneamiento.**
 
 ### Problema a Resolver
 
@@ -167,13 +167,13 @@ AquaSafe-TEI201/
 
 **Hardware:**
 
-- ESP32 Dev Module.
+- ESP32 SP-WROOM-32.
 - Sensor DS18B20.
 - Sensor de pH PH-4502C.
 - Sensor de turbidez.
 - Pantalla de visualización.
 - Resistencias eléctricas.
-- Protoboard.
+- Shield ESP para ESP32.
 - Cables Dupont.
 - Alimentación mediante USB durante el desarrollo.
 
@@ -214,12 +214,12 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 
 | Componente | Función |
 |---|---|
-| ESP32 | Procesamiento y control |
+| ESP32-WROOM-32 | Procesamiento y control |
 | DS18B20 | Medición de temperatura |
 | PH-4502C | Obtención de señal para estimar pH |
 | Sensor de turbidez | Detección óptica de turbidez |
 | Pantalla | Visualización de parámetros |
-| Protoboard | Montaje del prototipo |
+| Shield ESP para ESP32 | Montaje del prototipo |
 | Power bank | Alimentación componentes| 
 
 

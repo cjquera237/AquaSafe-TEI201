@@ -14,12 +14,11 @@ Como mejora solicitada por el profesor, se incorporará una **pantalla de visual
 - Sensor de temperatura DS18B20.
 - Sensor de pH con módulo PH-4502C.
 - Sensor de turbidez.
-- Sensor TDS (integración pendiente).
-- Tres LEDs: verde, amarillo y rojo.
-- Pantalla de visualización (pendiente de integración).
+- Pantalla de visualización.
 - Protoboard.
 - Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω.
 - Cables Dupont.
+- Módulo Power bank con 2 pilas 18650.
 
 ## Conexiones del ESP32
 
@@ -28,10 +27,6 @@ Como mejora solicitada por el profesor, se incorporará una **pantalla de visual
 | Temperatura DS18B20 | GPIO 21 |
 | Sensor de pH | GPIO 32 |
 | Sensor de turbidez | GPIO 34 |
-| Sensor TDS (pendiente) | GPIO 33 |
-| LED verde | GPIO 16 |
-| LED amarillo | GPIO 17 |
-| LED rojo | GPIO 18 |
 | Pantalla | Por definir |
 
 ## Alimentación y conexiones
@@ -41,7 +36,6 @@ Como mejora solicitada por el profesor, se incorporará una **pantalla de visual
 - Tierra GND compartida.
 - Resistencia pull-up de 4,7 kΩ para el sensor DS18B20.
 - Divisores resistivos para proteger las entradas analógicas del ESP32.
-- Resistencias limitadoras de corriente para los LEDs.
 
 ## Pantalla de visualización — Pendiente
 
@@ -52,8 +46,6 @@ Por recomendación del profesor, se integrará una pantalla al prototipo AquaSaf
 - Temperatura del agua (°C).
 - Nivel de pH.
 - Turbidez del agua.
-- Concentración de sólidos disueltos (TDS), cuando se integre el sensor.
-- Estado general del sistema, representado mediante el semáforo verde, amarillo o rojo.
 - Advertencias de sensores desconectados o pendientes de calibración.
 
 El modelo de pantalla y sus conexiones eléctricas todavía están por definir.

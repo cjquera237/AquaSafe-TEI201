@@ -54,7 +54,7 @@ Además, AquaSafe contará con un semáforo de LEDs que entregará alertas visua
 | Temperatura | DS18B20 | °C | Lectura funcional |
 | pH | PH-4502C | Escala pH | Calibración pendiente |
 | Turbidez | Sensor óptico | NTU tras calibración adecuada | Calibración pendiente |
-| Sólidos disueltos totales | Sensor TDS | ppm | Integración pendiente |
+
 
 Actualmente se han obtenido lecturas analógicas de pH y turbidez, pero todavía es necesario realizar las calibraciones correspondientes para obtener valores físicos confiables.
 

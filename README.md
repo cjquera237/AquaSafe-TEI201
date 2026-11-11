@@ -108,11 +108,9 @@ La selección del modelo, sus conexiones y su programación se encuentran pendie
 
 ### Desarrollo Pendiente
 
-- Selección de una pantalla compatible con ESP32.
 - Conexión y programación de la pantalla.
 - Calibración experimental de pH y turbidez.
 - Validación de precisión y confiabilidad.
-- Diseño de una carcasa portátil.
 - Integración física de todos los componentes.
 - Pruebas en condiciones outdoor.
 - Testing con un mínimo de cinco usuarios.

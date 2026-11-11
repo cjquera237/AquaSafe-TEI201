@@ -10,17 +10,17 @@ Como mejora solicitada por el profesor, se incorporará una **pantalla de visual
 
 ## Componentes
 
-- ESP32 Dev Module.
+- ESP32-WROOM-32.
 - Sensor de temperatura DS18B20.
 - Sensor de pH con módulo PH-4502C.
 - Sensor de turbidez.
 - Pantalla de visualización.
-- Protoboard.
+- Shield ESP para ESP32.
 - Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω.
 - Cables Dupont.
 - Módulo Power bank con 2 pilas 18650.
 
-## Conexiones del ESP32
+## Conexiones del ESP32 ##
 
 | Componente | Pin ESP32 |
 |---|---|

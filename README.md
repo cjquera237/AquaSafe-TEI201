@@ -348,7 +348,6 @@ Las casillas indican el avance respecto de los requisitos establecidos para TEI2
 - [x] Código Arduino desarrollado y comentado.
 - [ ] Librerías completamente documentadas.
 - [x] Instrucciones iniciales de instalación.
-- [ ] Integración del sensor TDS.
 - [ ] Programación de la pantalla.
 - [ ] Calibraciones experimentales verificadas.
 - [ ] Validación completa del sistema.
@@ -385,7 +384,6 @@ La siguiente etapa del proyecto se centrará en completar las funciones del prot
 
 ### Prioridades de Desarrollo
 
-1. Integrar el sensor TDS al sistema.
 2. Incorporar una pantalla que muestre todos los parámetros.
 3. Programar una interfaz clara y fácil de interpretar.
 4. Calibrar los sensores.
@@ -401,7 +399,7 @@ La siguiente etapa del proyecto se centrará en completar las funciones del prot
 
 AquaSafe es un prototipo académico en desarrollo.
 
-La medición de temperatura, pH, turbidez y TDS no permite identificar todos los contaminantes que pueden estar presentes en una fuente natural de agua.
+La medición de temperatura, pH y turbidez no permite identificar todos los contaminantes que pueden estar presentes en una fuente natural de agua.
 
 Especialmente, el dispositivo no detecta por sí mismo microorganismos patógenos ni certifica la ausencia de sustancias peligrosas.
 

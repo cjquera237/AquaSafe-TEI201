@@ -21,6 +21,7 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 | Módulo Power bank con 2 pilas 18650 | Alimentación portátil del dispositivo | Permite suministrar energía al sistema mediante dos baterías recargables. |
 | Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω | Protección y acondicionamiento eléctrico | Se utilizan para limitar la corriente y adaptación de señales. |
 | Cables Dupont | Conexión de componentes | Permite establecer conexiones eléctricas entre el microcontrolador, los sensores, la pantalla y los modulos electrónicos. |
+| Cable con conector JST XH2.54 de 3 pines (macho y hembra, 20 cm) | Conexión de componentes | Permite conectar componentes de manera sencilla, facilitando el montaje del prototipo. |
 | Placa de acrílico | Base estructural para el montaje | Permite fijar y ordenar los componentes electrónicos. |
 | Caja estanca | Protección del sistema electrónico | Protege los componentes frente a la humedad, salpicaduras y polvo. |
 

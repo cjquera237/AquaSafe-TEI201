@@ -1,4 +1,3 @@
-# Hardware – AquaSafe
 
 ## Descripción del proyecto
 
@@ -10,18 +9,22 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 
 ## Componentes
 
-| Componentes | Función | Jusificación técnica |
-|---|---|
-| ESP32-WROOM-32 | Procesamiento de señales y control del sistema |
-- Sensor de temperatura DS18B20.
-- Sensor de pH con módulo PH-4502C.
-- Sensor de turbidez.
-- Sensor TDS.
-- Pantalla de visualización.
-- Shield ESP para ESP32.
-- Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω.
-- Cables Dupont.
-- Módulo Power bank con 2 pilas 18650.
+| Componente | Función | Jusificación técnica |
+|---|---|---|
+| ESP32-WROOM-32 | Procesamiento de señales | Microocontrolador que permite conectar los sensores y procesar los datos. |
+| Sensor de temperatura DS18B20 | Medición de temperatura | Sensor digital que permite obtener mediciones y usa comunicación OneWire. |
+| Sensor de pH con módulo PH-4502C | Medición de pH | Obtiene la señal de la sonda de pH. |
+| Sensor de turbidez | Medición de turbidez | Detecta cambios en las propiedades ópticas del agua. |
+| Sensor TDS | Medición de sólidos totales disueltos | Estima sólidos disueltos a partir de la conductividad del agua. |
+| Pantalla de visualización | Presentación de las mediciones | Permite consultar los párametros monitoreados directamente desde el propio dispositivo. |
+| Shield ESP para ESP32 | Conexión y distribución eléctrica | Facilita la conexión de sensores, ordena y organiza el montaje electrónico. | 
+| Módulo Power bank con 2 pilas 18650 | Alimentación portátil del dispositivo | Permite suministrar energía al sistema mediante dos baterías recargables. |
+| Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω | Protección y acondicionamiento eléctrico | Se utilizan para limitar la corriente y adaptación de señales. |
+| Cables Dupont | Conexión de componentes | Permite establecer conexiones eléctricas entre el microcontrolador, los sensores, la pantalla y los modulos electrónicos. |
+| Placa de acrílico | Base estructural para el montaje | Permite fijar y ordenar los componentes electrónicos. |
+| Caja estanca | Protección del sistema electrónico | Protege los componentes frente a la humedad, salpicaduras y polvo. |
+
+
 
 ## Conexiones del ESP32 ##
 

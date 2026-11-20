@@ -26,25 +26,26 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 
 
 
-## Conexiones del ESP32 ##
+## Conexiones electrónicas del ESP32 ##
 
-| Componente | Pin ESP32 |
-|---|---|
-| Temperatura DS18B20 | GPIO 21 |
-| Sensor de pH | PIN 35 |
-| Sensor de turbidez | PIN 34 |
-| Pantalla | Por definir |
+| Componente | Pin ESP32 | Descripción de la conexión |
+|---|---|---|
+| Sensor de temperatura DS18B20 | PIN 27 | Se conecta al pin 27, con una resistencia de 4,7 kΩ entre DATA y 3V3. |
+| Sensor de pH | PIN 35 | Se conecta al pin 35 mediante un divisor de voltaje. |
+| Sensor de turbidez | PIN 34 | Se conecta al pin 34 mediante un divisor de voltaje. |
+| Sensor de TDS | P32 | Se conecta al pin 32 mediante un divisor de voltaje formado por dos resistencias de 10 kΩ. | 
+| Pantalla OLED| PIN 21 y PIN 22 | Se conecta mediante SDA al pin 22 y SCL al pin 22. |
 
 ## Alimentación y conexiones
 
-- DS18B20 alimentado con 3,3 V.
-- Módulos de pH y turbidez alimentados con 5 V.
-- Tierra GND compartida.
-- Resistencia pull-up de 4,7 kΩ para el sensor DS18B20.
-- Divisores resistivos para proteger las entradas analógicas del ESP32.
+- El sensor de temperatura DS18B20 sealimenta con 3,3 V.
+- Módulos de pH y turbidez se alimentan con 5 V.
+- Todos los componentes comparten una conexión a tierra (GND).
+- Se usa una resistencia pull-up de 4,7 kΩ para el sensor de temeperatura DS18B20.
+- Los sensores de pH, turbidez y TDS emplean divisores de voltaje para conectar sus señales al ESP32.
+- Se utilizan divisores resistivos para proteger las entradas analógicas del ESP32.
 
-## Pantalla de visualización — Pendiente
-
+## Pantalla de visualización 
 Por recomendación del profesor, se integrará una pantalla al prototipo AquaSafe.
 
 **Su objetivo es mostrar en tiempo real:**

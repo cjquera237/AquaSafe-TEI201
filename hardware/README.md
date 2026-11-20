@@ -11,12 +11,12 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 
 | Componente | Función | Jusificación técnica |
 |---|---|---|
-| ESP32-WROOM-32 | Procesamiento de señales | Microocontrolador que permite conectar los sensores y procesar los datos. |
+| ESP32-WROOM-32 | Procesamiento de señales y control del sistema| Microocontrolador con etradas analógicas, digitales y conectividad que permite conectar los sensores y procesar las mediciones. |
 | Sensor de temperatura DS18B20 | Medición de temperatura | Sensor digital que permite obtener mediciones y usa comunicación OneWire. |
-| Sensor de pH con módulo PH-4502C | Medición de pH | Obtiene la señal de la sonda de pH. |
-| Sensor de turbidez | Medición de turbidez | Detecta cambios en las propiedades ópticas del agua. |
-| Sensor TDS | Medición de sólidos totales disueltos | Estima sólidos disueltos a partir de la conductividad del agua. |
-| Pantalla de visualización | Presentación de las mediciones | Permite consultar los párametros monitoreados directamente desde el propio dispositivo. |
+| Sensor de pH con módulo PH-4502C | Medición del pH del agua | Permite obtener la señal de la sonda de pH para determinar la acidez o alcalinidad. |
+| Sensor de turbidez | Medición de turbidez | Detecta cambios en las propiedades ópticas del agua asociadas a partículas en suspensión. |
+| Sensor TDS | Estimación de sólidos disueltos totales | Estima sólidos disueltos a partir de mediciones relacionadas a la conductividad del agua. |
+| Pantalla de visualización | Presentación de mediciones | Permite consultar los párametros monitoreados directamente desde el propio dispositivo. |
 | Shield ESP para ESP32 | Conexión y distribución eléctrica | Facilita la conexión de sensores, ordena y organiza el montaje electrónico. | 
 | Módulo Power bank con 2 pilas 18650 | Alimentación portátil del dispositivo | Permite suministrar energía al sistema mediante dos baterías recargables. |
 | Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω | Protección y acondicionamiento eléctrico | Se utilizan para limitar la corriente y adaptación de señales. |
@@ -47,7 +47,7 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 
 ## Pantalla de visualización 
 Por recomendación del profesor, se integrará una pantalla al prototipo AquaSafe.
-
+Con la finalidad de mostrar las mediciones de los parámetros analizados y que el usuario del dispositivo interprete dichos resultados.
 **Su objetivo es mostrar en tiempo real:**
 
 - Temperatura del agua (°C).
@@ -55,7 +55,6 @@ Por recomendación del profesor, se integrará una pantalla al prototipo AquaSaf
 - Turbidez del agua.
 - Advertencias de sensores desconectados o pendientes de calibración.
 
-El modelo de pantalla y sus conexiones eléctricas todavía están por definir.
 
 ## Estado actual del proyecto
 

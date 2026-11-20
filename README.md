@@ -77,6 +77,7 @@ La pantalla mostrará:
 - Temperatura del agua (°C).
 - Nivel de pH.
 - Turbidez del agua.
+- Sólidos disueltos totales en el agua.
 - Estado general de los parámetros.
 - Advertencias de errores o sensores sin calibrar.
 
@@ -91,7 +92,7 @@ La selección del modelo, sus conexiones y su programación se encuentran pendie
 ## 3. Estado del Proyecto
 
 - **Versión actual:** Prototipo en desarrollo.
-- **Última actualización:** 11 de noviembre de 2026.
+- **Última actualización:** 20 de noviembre de 2026.
 - **Estado:** Montaje electrónico parcialmente funcional, con integraciones y validaciones pendientes.
 
 ### Avances Realizados

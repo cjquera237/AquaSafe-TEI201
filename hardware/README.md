@@ -11,7 +11,8 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 ## Componentes
 
 | Componentes | Función | Jusificación técnica |
-| ESP32-WROOM-32 |
+|---|---|
+| ESP32-WROOM-32 | Procesamiento de señales y control del sistema |
 - Sensor de temperatura DS18B20.
 - Sensor de pH con módulo PH-4502C.
 - Sensor de turbidez.

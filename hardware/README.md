@@ -2,18 +2,20 @@
 
 ## Descripción del proyecto
 
-AquaSafe es un sistema electrónico de monitoreo de parámetros del agua, desarrollado mediante un microcontrolador ESP32.
+El hardware de AquaSafe esta diseñado para monitorear parámetros fisicoquímicos de fuentes naturales de agua mediante un sistema electrónico compacto y portátil basado en un microcontrolador ESP32.
 
-El sistema utiliza sensores para obtener mediciones y un semáforo de LEDs para indicar el estado de los parámetros analizados.
+El prototipo AquaSafe utiliza sensores de temperatura, pH, solidos totales disueltos (TDS) y turbidez, con la finalidad de obtener información que pueda ser interpretada por las personas que usen el dispositivo.
 
-Como mejora solicitada por el profesor, se incorporará una **pantalla de visualización que permita consultar las mediciones directamente desde el dispositivo**, sin necesidad de conectar un computador.
+En esta carpeta se reúne toda la información y documentación técnica para comprender, reproducir, evaluar y mantener el sistema electrónico.
 
 ## Componentes
 
-- ESP32-WROOM-32.
+| Componentes | Función | Jusificación técnica |
+| ESP32-WROOM-32 |
 - Sensor de temperatura DS18B20.
 - Sensor de pH con módulo PH-4502C.
 - Sensor de turbidez.
+- Sensor TDS.
 - Pantalla de visualización.
 - Shield ESP para ESP32.
 - Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω.
@@ -25,8 +27,8 @@ Como mejora solicitada por el profesor, se incorporará una **pantalla de visual
 | Componente | Pin ESP32 |
 |---|---|
 | Temperatura DS18B20 | GPIO 21 |
-| Sensor de pH | GPIO 32 |
-| Sensor de turbidez | GPIO 34 |
+| Sensor de pH | PIN 35 |
+| Sensor de turbidez | PIN 34 |
 | Pantalla | Por definir |
 
 ## Alimentación y conexiones

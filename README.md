@@ -56,6 +56,7 @@ Además, AquaSafe contará con un semáforo de LEDs que entregará alertas visua
 | Turbidez | Sensor óptico | NTU tras calibración adecuada | Calibración pendiente |
 
 
+
 Actualmente se han obtenido lecturas analógicas de pH y turbidez, pero todavía es necesario realizar las calibraciones correspondientes para obtener valores físicos confiables.
 
 ### Funcionamiento del Sistema

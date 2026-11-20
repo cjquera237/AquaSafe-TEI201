@@ -54,7 +54,7 @@ Además, AquaSafe contará con un semáforo de LEDs que entregará alertas visua
 | Temperatura | DS18B20 | °C | Lectura funcional |
 | pH | PH-4502C | Escala pH | Calibración pendiente |
 | Turbidez | Sensor óptico | NTU tras calibración adecuada | Calibración pendiente |
-
+| Sólidos disueltos totales | Sesnsor TDS | ppm | Calibración pendiente |
 
 
 Actualmente se han obtenido lecturas analógicas de pH y turbidez, pero todavía es necesario realizar las calibraciones correspondientes para obtener valores físicos confiables.
@@ -170,6 +170,7 @@ AquaSafe-TEI201/
 - Sensor DS18B20.
 - Sensor de pH PH-4502C.
 - Sensor de turbidez.
+- Sensor TDS.
 - Pantalla de visualización.
 - Resistencias eléctricas.
 - Shield ESP para ESP32.
@@ -217,6 +218,7 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 | DS18B20 | Medición de temperatura |
 | PH-4502C | Obtención de señal para estimar pH |
 | Sensor de turbidez | Detección óptica de turbidez |
+| Sensor TDS | Estimación de sólidos disueltos totales en el agua |
 | Pantalla | Visualización de parámetros |
 | Shield ESP para ESP32 | Montaje del prototipo |
 | Power bank | Alimentación componentes| 
@@ -226,10 +228,11 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 
 | Componente | GPIO ESP32 |
 |---|---|
-| Temperatura DS18B20 | GPIO 21 |
-| Sensor de pH | GPIO 32 |
-| Turbidez | GPIO 34 |
-| Pantalla | Pendiente de definir |
+| Temperatura DS18B20 | GPIO 27 |
+| Sensor de pH | GPIO 35 |
+| Sensor de turbidez | GPIO 34 |
+| Sensor TDS | GPIO 32
+| Pantalla OLED | GPIO 21 y GPIO 22 |
 
 ### Alimentación
 

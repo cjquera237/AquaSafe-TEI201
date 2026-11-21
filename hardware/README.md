@@ -29,13 +29,13 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 
 ## Conexiones electrónicas del ESP32 ##
 
-| Componente | Pin ESP32 | Descripción de la conexión |
+| Componente | GPIO ESP32 | Descripción de la conexión |
 |---|---|---|
-| Sensor de temperatura DS18B20 | PIN 27 | Se conecta al pin 27, con una resistencia de 4,7 kΩ entre DATA y 3V3. |
-| Sensor de pH | PIN 35 | Se conecta al pin 35 mediante un divisor de voltaje. |
-| Sensor de turbidez | PIN 34 | Se conecta al pin 34 mediante un divisor de voltaje. |
-| Sensor de TDS | P32 | Se conecta al pin 32 mediante un divisor de voltaje formado por dos resistencias de 10 kΩ. | 
-| Pantalla OLED| PIN 21 y PIN 22 | Se conecta mediante SDA al pin 21 y SCL al pin 22. |
+| Sensor de temperatura DS18B20 | GPIO 27 | Se conecta al pin 27, con una resistencia de 4,7 kΩ entre DATA y 3V3. |
+| Sensor de pH | GPIO 35 | Se conecta al pin 35 mediante un divisor de voltaje. |
+| Sensor de turbidez | GPIO 34 | Se conecta al pin 34 mediante un divisor de voltaje. |
+| Sensor de TDS | GPIO 32 | Se conecta al pin 32 mediante un divisor de voltaje formado por dos resistencias de 10 kΩ. | 
+| Pantalla OLED| GPIO 21 y GPIO 22 | Se conecta mediante SDA al pin 21 y SCL al pin 22. |
 
 ## Alimentación y conexiones
 

@@ -35,7 +35,7 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 | Sensor de pH | PIN 35 | Se conecta al pin 35 mediante un divisor de voltaje. |
 | Sensor de turbidez | PIN 34 | Se conecta al pin 34 mediante un divisor de voltaje. |
 | Sensor de TDS | P32 | Se conecta al pin 32 mediante un divisor de voltaje formado por dos resistencias de 10 kΩ. | 
-| Pantalla OLED| PIN 21 y PIN 22 | Se conecta mediante SDA al pin 22 y SCL al pin 22. |
+| Pantalla OLED| PIN 21 y PIN 22 | Se conecta mediante SDA al pin 21 y SCL al pin 22. |
 
 ## Alimentación y conexiones
 
@@ -47,8 +47,12 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 - Se utilizan divisores resistivos para proteger las entradas analógicas del ESP32.
 
 ## Pantalla de visualización 
-Por recomendación del profesor, se integrará una pantalla al prototipo AquaSafe.
-Con la finalidad de mostrar las mediciones de los parámetros analizados y que el usuario del dispositivo interprete dichos resultados.
+AquaSafe incorpora una pantalla OLED que permite visualizar directamente las mediciones obtenidas por los sensores coenctados al microcontrolador ESP32. 
+
+La pantalla se conecta mediante los pines GPIO 21 (SDA) y GPIO 22 (SCL). 
+
+Su finalidad es facilitar la consulta de termperatura, pH, turbidez y TDS sin la necesidad de utilizar un computador.
+
 **Su objetivo es mostrar en tiempo real:**
 
 - Temperatura del agua (°C).

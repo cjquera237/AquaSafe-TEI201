@@ -80,7 +80,7 @@ La pantalla mostrará:
 - Estado general de los parámetros.
 - Advertencias de errores o sensores sin calibrar.
 
-La pantalla seleccionada para AquaSafe es una OLED, sus conexiones están definidas por los pines GPIO 21 (SDA) y GPIO 22 (SCL) del ESP32. Su programación y funcionamiento se encuentra listo.
+La pantalla seleccionada para AquaSafe es una OLED, sus conexiones están definidas por los pines GPIO 21 (SDA) y GPIO 22 (SCL) del ESP32. Su programación y funcionamiento se encuentran listos.
 
 
 
@@ -164,7 +164,7 @@ AquaSafe-TEI201/
 
 **Hardware:**
 
-- ESP32 SP-WROOM-32.
+- ESP32-WROOM-32.
 - Sensor DS18B20.
 - Sensor de pH PH-4502C.
 - Sensor de turbidez.
@@ -174,9 +174,9 @@ AquaSafe-TEI201/
 - Shield ESP para ESP32.
 - Cables Dupont.
 - Cable con Conector 3 Pines JST XH2.54 Macho y Hembra de 20cm
-- Alimentación mediante USB durante el desarrollo del prototipo. Para la versón portátil de AquaSafe se considera un módulo Power Bank con dos baterías recargables 18650.
+- Alimentación mediante USB durante el desarrollo del prototipo. Para la versión portátil de AquaSafe se considera un módulo Power Bank con dos baterías recargables 18650.
 - Placa de acrílico para el montaje de componentes.
-- Caja estanca para proteher los componentes del sistema electrónico.
+- Caja estanca para proteger los componentes del sistema electrónico.
 
 ### Instalación
 
@@ -222,7 +222,7 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 | Sensor TDS | Estimación de sólidos disueltos totales en el agua |
 | Pantalla | Visualización de parámetros |
 | Shield ESP para ESP32 | Montaje del prototipo |
-| Power bank | Alimentación componentes| 
+| Power bank | Alimentación de los componentes| 
 | Placa de acrílico | Montaje de componentes. |
 | Caja estanca | Protección del sistema electrónico |
 
@@ -390,14 +390,13 @@ La siguiente etapa del proyecto se centrará en completar las funciones del prot
 
 ### Prioridades de Desarrollo
 
-2. Incorporar una pantalla que muestre todos los parámetros.
-3. Programar una interfaz clara y fácil de interpretar.
-4. Calibrar los sensores.
-5. Diseñar un encapsulado portátil y resistente para el uso previsto.
-6. Realizar pruebas con muestras de agua natural.
-7. Ejecutar pruebas con al menos cinco usuarios.
-8. Analizar resultados e implementar mejoras.
-9. Preparar los entregables finales del curso.
+1. Programar una interfaz clara y fácil de interpretar.
+2. Calibrar los sensores.
+3. Diseñar un encapsulado portátil y resistente para el uso previsto.
+4. Realizar pruebas con muestras de agua natural.
+5. Ejecutar pruebas con al menos cinco usuarios.
+6. Analizar resultados e implementar mejoras.
+7. Preparar los entregables finales del curso.
 
 ---
 

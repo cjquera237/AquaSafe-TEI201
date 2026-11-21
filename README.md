@@ -175,6 +175,7 @@ AquaSafe-TEI201/
 - Resistencias eléctricas.
 - Shield ESP para ESP32.
 - Cables Dupont.
+- Cable con Conector 3 Pines JST XH2.54 Macho y Hembra de 20cm
 - Alimentación mediante USB durante el desarrollo.
 
 ### Instalación

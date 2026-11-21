@@ -25,6 +25,7 @@ Documentación técnica del software
 - OneWire: comunicación con el sensor DS18B20 - Versión X.X
 - DallasTemperature: lectura de temperatura - Versión X.X
 - Preferences: almacenamiento de parámetros de calibracion en el ESP32 - Versión X.X
+- math.h: operaciones matemáticas y validación numérica - Versión: estándar
 
 ---
 

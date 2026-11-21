@@ -9,18 +9,18 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 
 ## Componentes
 
-| Componente | Función | Jusificación técnica |
+| Componente | Función | Justificación técnica |
 |---|---|---|
-| ESP32-WROOM-32 | Procesamiento de señales y control del sistema| Microocontrolador con etradas analógicas, digitales y conectividad que permite conectar los sensores y procesar las mediciones. |
+| ESP32-WROOM-32 | Procesamiento de señales y control del sistema| Microcontrolador con entradas analógicas, digitales y conectividad que permite conectar los sensores y procesar las mediciones. |
 | Sensor de temperatura DS18B20 | Medición de temperatura | Sensor digital que permite obtener mediciones y usa comunicación OneWire. |
 | Sensor de pH con módulo PH-4502C | Medición del pH del agua | Permite obtener la señal de la sonda de pH para determinar la acidez o alcalinidad. |
 | Sensor de turbidez | Medición de turbidez | Detecta cambios en las propiedades ópticas del agua asociadas a partículas en suspensión. |
 | Sensor TDS | Estimación de sólidos disueltos totales | Estima sólidos disueltos a partir de mediciones relacionadas a la conductividad del agua. |
-| Pantalla de visualización | Presentación de mediciones | Permite consultar los párametros monitoreados directamente desde el propio dispositivo. |
+| Pantalla de visualización | Presentación de mediciones | Permite consultar los parámetros monitoreados directamente desde el propio dispositivo. |
 | Shield ESP para ESP32 | Conexión y distribución eléctrica | Facilita la conexión de sensores, ordena y organiza el montaje electrónico. | 
 | Módulo Power bank con 2 pilas 18650 | Alimentación portátil del dispositivo | Permite suministrar energía al sistema mediante dos baterías recargables. |
 | Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω | Protección y acondicionamiento eléctrico | Se utilizan para limitar la corriente y adaptación de señales. |
-| Cables Dupont | Conexión de componentes | Permite establecer conexiones eléctricas entre el microcontrolador, los sensores, la pantalla y los modulos electrónicos. |
+| Cables Dupont | Conexión de componentes | Permite establecer conexiones eléctricas entre el microcontrolador, los sensores, la pantalla y los módulos electrónicos. |
 | Cable con conector JST XH2.54 de 3 pines (macho y hembra, 20 cm) | Conexión de componentes | Permite conectar componentes de manera sencilla, facilitando el montaje del prototipo. |
 | Placa de acrílico | Base estructural para el montaje | Permite fijar y ordenar los componentes electrónicos. |
 | Caja estanca | Protección del sistema electrónico | Protege los componentes frente a la humedad, salpicaduras y polvo. |
@@ -39,10 +39,10 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 
 ## Alimentación y conexiones
 
-- El sensor de temperatura DS18B20 sealimenta con 3,3 V.
+- El sensor de temperatura DS18B20 se alimenta con 3,3 V.
 - Módulos de pH y turbidez se alimentan con 5 V.
 - Todos los componentes comparten una conexión a tierra (GND).
-- Se usa una resistencia pull-up de 4,7 kΩ para el sensor de temeperatura DS18B20.
+- Se usa una resistencia pull-up de 4,7 kΩ para el sensor de temperatura DS18B20.
 - Los sensores de pH, turbidez y TDS emplean divisores de voltaje para conectar sus señales al ESP32.
 - Se utilizan divisores resistivos para proteger las entradas analógicas del ESP32.
 

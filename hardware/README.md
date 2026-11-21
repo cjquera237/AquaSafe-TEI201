@@ -16,7 +16,7 @@ En esta carpeta se reúne toda la información y documentación técnica para co
 | Sensor de pH con módulo PH-4502C | Medición del pH del agua | Permite obtener la señal de la sonda de pH para determinar la acidez o alcalinidad. |
 | Sensor de turbidez | Medición de turbidez | Detecta cambios en las propiedades ópticas del agua asociadas a partículas en suspensión. |
 | Sensor TDS | Estimación de sólidos disueltos totales | Estima sólidos disueltos a partir de mediciones relacionadas a la conductividad del agua. |
-| Pantalla de visualización | Presentación de mediciones | Permite consultar los parámetros monitoreados directamente desde el propio dispositivo. |
+| Pantalla de visualización OLED | Presentación de mediciones | Permite consultar los parámetros monitoreados directamente desde el propio dispositivo. |
 | Shield ESP para ESP32 | Conexión y distribución eléctrica | Facilita la conexión de sensores, ordena y organiza el montaje electrónico. | 
 | Módulo Power bank con 2 pilas 18650 | Alimentación portátil del dispositivo | Permite suministrar energía al sistema mediante dos baterías recargables. |
 | Resistencias de 4,7 kΩ, 10 kΩ y 220–330 Ω | Protección y acondicionamiento eléctrico | Se utilizan para limitar la corriente y adaptación de señales. |

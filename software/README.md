@@ -22,9 +22,9 @@ Documentación técnica del software
 **Lenguaje:** C/C++  
 **IDE:** Arduino IDE 2.x  
 **Librerías principales:**
-- [Librería 1] - Versión X.X
-- [Librería 2] - Versión X.X
-- [Librería 3] - Versión X.X
+- OneWire: comunicación con el sensor DS18B20 - Versión X.X
+- DallasTemperature: lectura de temperatura - Versión X.X
+- Preferences: almacenamiento de parámetros de calibracion en el ESP32 - Versión X.X
 
 ---
 
@@ -114,11 +114,13 @@ Editar las siguientes constantes en el código:
 [Incluir diagrama de flujo o arquitectura]
 
 ### Módulos Principales
-1. **Inicialización** - Setup del sistema
-2. **Lectura de Sensores** - Captura de datos
-3. **Procesamiento** - Análisis y decisiones
-4. **Actuación** - Control de actuadores
-5. **Comunicación** - Envío de datos
+1. **Inicialización:**  El ESP32 prepara los sensores y la pantalla OLED (setup del sistema)
+2. **Lectura de Sensores:** obtiene información de temperatura, pH, turbidez y TDS. (captura de datos)
+3. **Procesamiento:** interpreta las señales recibidas mediante las funciones programadas. (análisis y decisiones)
+4. **Actuación:** - control de actuadores
+5. **Comunicación:** - envío de datos
+6. **Visualizción:** presenta los valores de las medicones obtenidos en la pantalla OLED.
+7. **Calibración:** permite almacenar parámetros de referencia necesarios para interpretar las mediciones.
 
 ---
 

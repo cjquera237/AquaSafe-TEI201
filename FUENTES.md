@@ -70,7 +70,6 @@ La inteligencia artificial se utilizó como herramienta de apoyo durante distint
 - Lectura de entradas analógicas del ESP32.
 - Promedio de muestras para reducir variaciones.
 - Evaluación de parámetros mediante condiciones.
-- Control de LEDs con `digitalWrite()`.
 
 **Adaptaciones del proyecto:**
 - Asignación de los pines utilizados en el montaje físico.

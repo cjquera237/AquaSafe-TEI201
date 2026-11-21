@@ -45,7 +45,6 @@ El proyecto busca desarrollar un sistema que permita monitorear parámetros del 
 
 La información será procesada y visualizada directamente en una pantalla incorporada al dispositivo, facilitando su interpretación sin necesidad de utilizar un computador.
 
-Además, AquaSafe contará con un semáforo de LEDs que entregará alertas visuales complementarias según los parámetros registrados.
 
 ### Parámetros Monitoreados
 
@@ -232,7 +231,7 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 | Temperatura DS18B20 | GPIO 27 |
 | Sensor de pH | GPIO 35 |
 | Sensor de turbidez | GPIO 34 |
-| Sensor TDS | GPIO 32
+| Sensor TDS | GPIO 32 |
 | Pantalla OLED | GPIO 21 y GPIO 22 |
 
 ### Alimentación

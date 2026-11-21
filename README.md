@@ -80,7 +80,7 @@ La pantalla mostrará:
 - Estado general de los parámetros.
 - Advertencias de errores o sensores sin calibrar.
 
-La selección del modelo, sus conexiones y su programación se encuentran pendientes de implementación.
+La pantalla seleccionada para AquaSafe es una OLED, sus conexiones están definidas por los pines GPIO 21 (SDA) y GPIO 22 (SCL) del ESP32. Su programación y funcionamiento se encuentra listo.
 
 
 
@@ -109,10 +109,8 @@ La selección del modelo, sus conexiones y su programación se encuentran pendie
 
 ### Desarrollo Pendiente
 
-- Conexión y programación de la pantalla.
 - Calibración experimental de pH y turbidez.
 - Validación de precisión y confiabilidad.
-- Integración física de todos los componentes.
 - Pruebas en condiciones outdoor.
 - Testing con un mínimo de cinco usuarios.
 
@@ -130,7 +128,7 @@ AquaSafe-TEI201/
 │   └── Código Arduino y librerías
 │
 ├── diseno_3d/
-│   └── Modelos Fusion 360 y planos técnicos
+│   └── Diseño del encapsulado, modelos y planos técnicos
 │
 ├── testing/
 │   └── Validación técnica y con usuarios
@@ -171,12 +169,14 @@ AquaSafe-TEI201/
 - Sensor de pH PH-4502C.
 - Sensor de turbidez.
 - Sensor TDS.
-- Pantalla de visualización.
+- Pantalla de visualización OLED.
 - Resistencias eléctricas.
 - Shield ESP para ESP32.
 - Cables Dupont.
 - Cable con Conector 3 Pines JST XH2.54 Macho y Hembra de 20cm
-- Alimentación mediante USB durante el desarrollo.
+- Alimentación mediante USB durante el desarrollo del prototipo. Para la versón portátil de AquaSafe se considera un módulo Power Bank con dos baterías recargables 18650.
+- Placa de acrílico para el montaje de componentes.
+- Caja estanca para proteher los componentes del sistema electrónico.
 
 ### Instalación
 
@@ -223,7 +223,8 @@ La calibración relativa de turbidez permite comparar muestras, pero no entrega 
 | Pantalla | Visualización de parámetros |
 | Shield ESP para ESP32 | Montaje del prototipo |
 | Power bank | Alimentación componentes| 
-
+| Placa de acrílico | Montaje de componentes. |
+| Caja estanca | Protección del sistema electrónico |
 
 ### Conexiones Actuales
 

@@ -64,7 +64,7 @@ Para utilizar los sensores y componentes de AquaSafe se deben instalar las libre
 
 -DallasTemperature
 
-El resto de librerías necesarias deben comprobarse segun la versión final del código, especialmente las usadas en la pantalla OLED
+El resto de librerías necesarias deben comprobarse segun la versión final del código, especialmente las usadas en la pantalla OLED.
 
 ### 4. Cargar el código al ESP32
 

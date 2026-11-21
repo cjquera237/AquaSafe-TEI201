@@ -53,7 +53,7 @@ La información será procesada y visualizada directamente en una pantalla incor
 | Temperatura | DS18B20 | °C | Lectura funcional |
 | pH | PH-4502C | Escala pH | Calibración pendiente |
 | Turbidez | Sensor óptico | NTU tras calibración adecuada | Calibración pendiente |
-| Sólidos disueltos totales | Sesnsor TDS | ppm | Calibración pendiente |
+| Sólidos disueltos totales | Sensor TDS | ppm | Calibración pendiente |
 
 
 Actualmente se han obtenido lecturas analógicas de pH y turbidez, pero todavía es necesario realizar las calibraciones correspondientes para obtener valores físicos confiables.

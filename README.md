@@ -346,8 +346,8 @@ Las casillas indican el avance respecto de los requisitos establecidos para TEI2
 - [ ] Esquema eléctrico validado (Fritzing/Wokwi).
 - [ ] BOM completo (lista de materiales).
 - [ ] Fotografías de alta resolución según requisitos.
-- [ ] Integración física completa de sensores.
-- [ ] Integración de la pantalla.
+- [X] Integración física completa de sensores.
+- [X] Integración de la pantalla.
 
 ### Software
 

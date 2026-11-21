@@ -19,8 +19,11 @@ Documentación técnica del software
 ## Stack Tecnológico
 
 **Plataforma:** Arduino / ESP32  
+
 **Lenguaje:** C/C++  
+
 **IDE:** Arduino IDE 2.x  
+
 **Librerías principales:**
 - OneWire: comunicación con el sensor DS18B20 - Versión X.X
 - DallasTemperature: lectura de temperatura - Versión X.X

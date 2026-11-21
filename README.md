@@ -69,7 +69,9 @@ El funcionamiento previsto de AquaSafe consiste en:
 
 ### Pantalla de Visualización
 
-Como mejora solicitada por el profesor, AquaSafe incorporará una pantalla que permita consultar los datos directamente desde el dispositivo.
+AquaSafe incorpora una pantalla que permita visualizar los datos obtenidos por los sensores directamente desde el dispositivo sin la necesidad de utilizar un computador.
+
+La pantalla seleccionada para AquaSafe es una OLED, sus conexiones están definidas por los pines GPIO 21 (SDA) y GPIO 22 (SCL) del ESP32. Su programación y funcionamiento se encuentran listos.
 
 La pantalla mostrará:
 
@@ -79,9 +81,6 @@ La pantalla mostrará:
 - Sólidos disueltos totales en el agua.
 - Estado general de los parámetros.
 - Advertencias de errores o sensores sin calibrar.
-
-La pantalla seleccionada para AquaSafe es una OLED, sus conexiones están definidas por los pines GPIO 21 (SDA) y GPIO 22 (SCL) del ESP32. Su programación y funcionamiento se encuentran listos.
-
 
 
 **Importante:** AquaSafe permite monitorear algunos parámetros fisicoquímicos, pero no certifica la potabilidad del agua ni detecta todos los posibles contaminantes.

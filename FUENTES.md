@@ -62,8 +62,8 @@ La inteligencia artificial se utilizó como herramienta de apoyo durante distint
 
 **Solicitudes realizadas:**
 - Desarrollar un programa que obtenga las lecturas de los sensores.
-- Implementar un semáforo automático utilizando tres LEDs.
-- Integrar temperatura, pH y turbidez en un único programa.
+
+- Integrar temperatura, pH, turbidez y sólidos disueltos totales en un único programa.
 
 **Código desarrollado con asistencia:**
 - Lectura de temperatura mediante DallasTemperature.
@@ -99,7 +99,6 @@ Entre ellos:
 - Instalación de bibliotecas.
 - Lecturas del sensor DS18B20.
 - Conexión de entradas analógicas.
-- Funcionamiento de los LEDs.
 - Identificación del problema de tierra común (GND).
 
 Las soluciones se evaluaron mediante pruebas realizadas sobre el prototipo físico.
@@ -141,9 +140,6 @@ Las mediciones y los resultados experimentales deben obtenerse del prototipo rea
 Este archivo se actualizará cuando se incorporen nuevas bibliotecas, componentes o fuentes externas.
 
 Las próximas integraciones previstas incluyen:
-- Sensor TDS.
-- Pantalla de visualización.
-- Bibliotecas para la interfaz de pantalla.
 - Diseño y documentación del encapsulado.
 - Pruebas experimentales adicionales.
 

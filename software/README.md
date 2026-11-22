@@ -123,7 +123,7 @@ Editar las siguientes constantes en el código:
 3. **Procesamiento:** interpreta las señales recibidas mediante las funciones programadas. (análisis y decisiones)
 4. **Actuación:** - control de actuadores
 5. **Comunicación:** - envío de datos
-6. **Visualizción:** presenta los valores de las medicones obtenidos en la pantalla OLED.
+6. **Visualizción:** presenta los valores de las mediciones obtenidos en la pantalla OLED.
 7. **Calibración:** permite almacenar parámetros de referencia necesarios para interpretar las mediciones.
 
 ---

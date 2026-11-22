@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "author": "AquaSafe · TEI201",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": -30,
+      "left": 250,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ds18b20",
+      "id": "temp",
+      "top": -5,
+      "left": -205,
+      "attrs": {
+        "temperature": "21.5"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pull",
+      "top": 40,
+      "left": -110,
+      "attrs": {
+        "value": "4700"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "ph",
+      "top": 225,
+      "left": -160,
+      "attrs": {
+        "value": "459"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "turb",
+      "top": 225,
+      "left": -30,
+      "attrs": {
+        "value": "930"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "tds",
+      "top": 225,
+      "left": 100,
+      "attrs": {
+        "value": "341"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label1",
+      "top": 302,
+      "left": -160,
+      "attrs": {
+        "text": "pH • GPIO35"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label2",
+      "top": 302,
+      "left": -30,
+      "attrs": {
+        "text": "Turbidez • GPIO34"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label3",
+      "top": 302,
+      "left": 100,
+      "attrs": {
+        "text": "TDS • GPIO32"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "oled:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "oled:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "oled:SDA",
+      "esp:D21",
+      "blue",
+      []
+    ],
+    [
+      "oled:SCL",
+      "esp:D22",
+      "purple",
+      []
+    ],
+    [
+      "temp:VCC",
+      "esp:VIN",
+      "red",
+      []
+    ],
+    [
+      "temp:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "temp:DQ",
+      "esp:D27",
+      "green",
+      []
+    ],
+    [
+      "pull:1",
+      "temp:DQ",
+      "green",
+      []
+    ],
+    [
+      "pull:2",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "ph:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "ph:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "ph:SIG",
+      "esp:D35",
+      "orange",
+      []
+    ],
+    [
+      "turb:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "turb:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "turb:SIG",
+      "esp:D34",
+      "cyan",
+      []
+    ],
+    [
+      "tds:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "tds:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "tds:SIG",
+      "esp:D32",
+      "green",
+      []
+    ]
+  ],
+  "dependencies": {}
+}

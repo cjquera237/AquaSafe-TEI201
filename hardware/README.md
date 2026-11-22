@@ -62,7 +62,4 @@ Su finalidad es facilitar la consulta de temperatura, pH, turbidez y TDS sin la 
 - Advertencias de sensores desconectados o pendientes de calibración.
 
 
-## Estado actual del proyecto
 
-**Implementado o probado:**
-- Montaje del ESP32 en

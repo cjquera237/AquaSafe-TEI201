@@ -194,17 +194,19 @@ AquaSafe-TEI201/
 
 El programa contempla comandos de calibración enviados mediante el Monitor Serie:
 
-| Comando | Función |
+| Comando de ejemplo | Función |
 |---|---|
-| `7` | Registrar referencia de pH 7 |
-| `4` | Registrar referencia de pH 4 |
-| `L` | Registrar referencia de agua clara |
-| `T` | Registrar referencia de muestra turbia |
-| `R` | Borrar calibraciones almacenadas |
+| `ayuda` | Mostrar instrucciones de uso. |
+| `ph 1 4.01` | Registrar el primer patrón de pH; utilizar el valor real de la solución. |
+| `ph 2 9.18` | Registrar el segundo patrón de pH; utilizar el valor real de la solución. |
+| `tds 1 VALOR` | Registrar el primer patrón de TDS. |
+| `tds 2 VALOR` | Registrar el segundo patrón de TDS. |
+| `turb 1 VALOR` | Registrar el primer patrón de turbidez. |
+| `turb 2 VALOR` | Registrar el segundo patrón de turbidez. |
+| `temp VALOR` | Aplicar un ajuste de temperatura con un termómetro de referencia; al hacerlo se invalida la calibración de TDS y debe repetirse. |
 
 La calibración de pH requiere soluciones patrón conocidas.
 
-La calibración relativa de turbidez permite comparar muestras, pero no entrega automáticamente valores en NTU.
 
 ---
 

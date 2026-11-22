@@ -128,7 +128,7 @@ La calibración está incorporada en el programa, pero sus resultados deben vali
 Los comandos se envían en el Monitor Serie a **115200 baudios**, con **Nueva línea**. Cada comando de calibración utiliza la señal actual del sensor; por eso se debe esperar a que se estabilice en su solución patrón.
 
 **Nota:** la conversión de TDS utiliza como base una curva nominal identificada en el código como Keyestudio KS0429. Se debe comprobar que sea aplicable al módulo instalado; sin esa confirmación, el valor en ppm es una estimación.
-```
+
 
 ## Arquitectura del Software
 

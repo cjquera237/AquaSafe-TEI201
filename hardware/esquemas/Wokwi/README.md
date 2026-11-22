@@ -2,7 +2,7 @@
 
 ## 1. Descripción general
 
-Esta carpeta contiene los archivos de la simulacion electrónica de AquaSafe, desarrollada en Wokwi.
+Esta carpeta contiene los archivos de la simulación electrónica de AquaSafe, desarrollada en Wokwi.
 
 La simulación permite representar parte del funcionamiento del prototipo utilizando un microcontrolador ESP32, un sensor de temperatura DS18B20 y una pantalla OLED.
 
@@ -27,7 +27,7 @@ Debido a que los sensores de pH, turbidez y TDS utilizados en el prototipo AquaS
 
 | Componente | Pin del ESP32 |
 |---|---|
-| Senor DS18B20| GPIO 27 |
+| Sensor DS18B20| GPIO 27 |
 | Potenciómetro de pH | GPIO 35 |
 | Potenciómetro de turbidez | GPIO 34 |
 | Potenciómetro de TDS | GPIO 32 |
@@ -35,7 +35,7 @@ Debido a que los sensores de pH, turbidez y TDS utilizados en el prototipo AquaS
 | Pantalla OLED (SCL) | GPIO 22 |
 
 ## 4. Archivos de Wokwi
-| Archivo| Descripción |
+| Archivo | Descripción |
 |---|---|
 | diagram.json | Contiene los componentes y sus conexiones |
 | sketch.ino | Contiene el programa Arduino utilizado para la simulación. |
@@ -44,11 +44,11 @@ Debido a que los sensores de pH, turbidez y TDS utilizados en el prototipo AquaS
 ## 5. Instalación y ejecución 
 
 Para ejecutar la simulación: 
-1. Ingresea a Wokwi
+1. Ingresa a Wokwi
 2. Crear un proyecto nuevo usando ESP32 DevKit V1.
 3. Copiar el contenido de diagram.json al archivo de conexiones del proyecto.
 4. Copiar el contenido de sketch.ino al editor del programa.
-5. Incorporar las librerpias indicadas en libraries.txt, según las opciones de gestión de librerías de Wokwi.
+5. Incorporar las librerías indicadas en libraries.txt, según las opciones de gestión de librerías de Wokwi.
 6. Iniciar simulación.
 7. Abrir el Monitor Serie a 115200 baudios para observar la informacion generada.
 
@@ -56,7 +56,7 @@ Para ejecutar la simulación:
 
 ## 6. Pruebas de simulación
 
-Se definieron tres escenarios para observar la respuesta del programa ante diferentes combianciones de señales.
+Se definieron tres escenarios para observar la respuesta del programa ante diferentes combinaciones de señales.
 
 | Escenario | pH (0-1023) | Turbidez (0-1023) | Mensaje esperado |
 |---|---|---|---|
@@ -88,4 +88,4 @@ La simulación presenta algunas limitaciones respecto al prototipo físico:
 
 -Los mensajes mostrados permiten representar situaciones de demostración, pero no certifican la seguridad del agua para consumo.
 
-Por lo tanto, Wokwi se emplea como una herramienta complementaria para comprender el funcionamiento generak del sistema AquaSafe. 
+Por lo tanto, Wokwi se emplea como una herramienta complementaria para comprender el funcionamiento general del sistema AquaSafe. 

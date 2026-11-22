@@ -135,3 +135,59 @@ Editar las siguientes constantes en el código:
 | `/status` | GET | Estado del sistema |
 | `/data` | GET | Datos de sensores |
 | `/control` | POST | Control de actuadores |
+
+# Software de AquaSafe
+
+## Descripción
+
+Esta carpeta contiene el firmware del prototipo AquaSafe, desarrollado en Arduino/C++ para un ESP32 DevKit de 30 pines. El programa lee temperatura, pH, turbidez y TDS, procesa las señales y muestra información en una pantalla OLED y en el Monitor Serie. El dispositivo es un prototipo académico de caracterización preliminar de agua: **no certifica su potabilidad**.
+
+**Código principal:** [AquaSafe_ESP32.ino](AquaSafe_ESP32.ino).
+
+## Hardware y pines
+
+| Elemento | Pin ESP32 | Función |
+|---|---|---|
+| DS18B20 | GPIO 27 | Señal OneWire de temperatura |
+| Módulo pH | GPIO 35 | Entrada analógica |
+| Módulo de turbidez | GPIO 34 | Entrada analógica |
+| Módulo TDS | GPIO 32 | Entrada analógica; señal acondicionada mediante divisor |
+| OLED SDA | GPIO 21 | Comunicación I2C |
+| OLED SCL | GPIO 22 | Comunicación I2C |
+
+El firmware está configurado para una OLED SSD1306 de 128 × 64 píxeles. Detecta las direcciones I2C `0x3C` y `0x3D`. El modelo físico exacto y las conexiones se deben verificar con el equipo responsable del montaje. En la configuración actual **no se utilizan LED ni protoboard**.
+
+## Dependencias
+
+- Paquete de placas **ESP32 by Espressif Systems** (Arduino Core; versión usada por el equipo por confirmar).
+- **OneWire** (versión por confirmar).
+- **DallasTemperature** (versión por confirmar).
+- **Adafruit GFX Library** (versión por confirmar).
+- **Adafruit SSD1306** (versión por confirmar).
+- **Adafruit BusIO** (dependencia utilizada por las bibliotecas Adafruit, según instalación).
+- **Wire**, **Preferences** y **Arduino.h** (incluidas con el entorno ESP32/Arduino).
+
+Las versiones verificadas deben registrarse en el archivo [FUENTES.md](../FUENTES.md).
+
+## Instalación y carga del firmware
+
+Estas instrucciones están dirigidas a la persona del equipo que dispone de Arduino IDE y del ESP32 físico:
+
+1. Instalar Arduino IDE y el paquete de placas ESP32 de Espressif.
+2. Desde el Gestor de bibliotecas, instalar OneWire, DallasTemperature, Adafruit GFX Library y Adafruit SSD1306, junto con sus dependencias.
+3. Abrir el archivo [AquaSafe_ESP32.ino](AquaSafe_ESP32.ino) en Arduino IDE.
+4. Conectar el ESP32 mediante USB, seleccionar la placa y el puerto correspondientes.
+5. Verificar y cargar el código. Si la carga o compilación falla, revisar el modelo de placa y las versiones de las bibliotecas.
+6. Abrir el Monitor Serie a **115200 baudios**, con final de línea **Nueva línea**.
+
+**Precaución:** antes de energizar el circuito, verificar que las señales que llegan a los GPIO del ESP32 respeten los límites eléctricos y que los divisores de voltaje correspondan al montaje final.
+
+## Funcionamiento del programa
+
+Al encender, la función `setup()` inicia la comunicación serie, recupera los datos de calibración desde `Preferences`, configura el ADC, detecta la pantalla OLED e inicia el DS18B20.
+
+En `loop()`, el programa obtiene la temperatura y las señales analógicas de pH, TDS y turbidez; procesa las lecturas, atiende comandos de calibración, entrega información por el Monitor Serie y actualiza la pantalla aproximadamente cada medio segundo.
+
+La pantalla OLED muestra la temperatura en °C, la señal de pH en voltios, el TDS estimado o calibrado en ppm cuando está disponible (o en voltios si no lo está), la señal de turbidez en voltios y un texto de evaluación demostrativa. **Los voltajes de pH y turbidez mostrados en la OLED no equivalen por sí solos a pH calibrado ni a NTU.** En el Monitor Serie, el programa también calcula pH y turbidez en UNT cuando existen referencias de calibración válidas.
+
+El programa puede mostrar etiquetas de demostración como `REF. POTABLE`, pero estas **no deben interpretarse como una declaración de agua segura para beber**

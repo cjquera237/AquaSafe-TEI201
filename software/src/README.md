@@ -9,11 +9,11 @@ Archivo principal del proyecto Arduino/ESP32
 
 ## **Estructura:**
 
-  ### setup()
+  ### setup():
 
 Inicializa los sensores, la pantalla OLED, la comunicación serie y las calibraciones almacenadas.
    
-   ### loop()
+   ### loop():
 
 Ejecuta el ciclo principal del sistema, incluyendo la lectura de sensores, el procesamiento de datos y la actualización de los resultados.
 

@@ -64,9 +64,17 @@ Para utilizar los sensores y componentes de AquaSafe se deben instalar las libre
 2. Ingresar al Gestor de bibliotecas.
 3. Buscar e instalar las siguentes librerías:
 
--OneWire
+-OneWire (versión por confirmar).
 
--DallasTemperature
+-DallasTemperature (versión por confirmar).
+
+-Adafruit GFX Library (versión por confirmar).
+
+-Adafruit SSD1306 (versión por confirmar).
+
+-Adafruit BusIO (dependencia utilizada por las bibliotecas Adafruit, según instalación).
+
+-Wire,Preferences y Arduino.h (incluidas con el entorno ESP32/Arduino).
 
 El resto de librerías necesarias deben comprobarse segun la versión final del código, especialmente las usadas en la pantalla OLED.
 
@@ -121,10 +129,9 @@ Editar las siguientes constantes en el código:
 1. **Inicialización:**  El ESP32 prepara los sensores y la pantalla OLED (setup del sistema)
 2. **Lectura de Sensores:** obtiene información de temperatura, pH, turbidez y TDS. (captura de datos)
 3. **Procesamiento:** interpreta las señales recibidas mediante las funciones programadas. (análisis y decisiones)
-4. **Actuación:** - control de actuadores
-5. **Comunicación:** - envío de datos
-6. **Visualizción:** presenta los valores de las mediciones obtenidos en la pantalla OLED.
-7. **Calibración:** permite almacenar parámetros de referencia necesarios para interpretar las mediciones.
+4. **Comunicación:** - envío de datos
+5. **Visualizción:** presenta los valores de las mediciones obtenidos en la pantalla OLED.
+6. **Calibración:** permite almacenar parámetros de referencia necesarios para interpretar las mediciones.
 
 ---
 
@@ -149,19 +156,9 @@ Esta carpeta contiene el firmware del prototipo AquaSafe, desarrollado en Arduin
 | OLED SDA | GPIO 21 | Comunicación I2C |
 | OLED SCL | GPIO 22 | Comunicación I2C |
 
-El firmware está configurado para una OLED SSD1306 de 128 × 64 píxeles. Detecta las direcciones I2C `0x3C` y `0x3D`. El modelo físico exacto y las conexiones se deben verificar con el equipo responsable del montaje. En la configuración actual **no se utilizan LED ni protoboard**.
+El firmware está configurado para una OLED SSD1306 de 128 × 64 píxeles. Detecta las direcciones I2C `0x3C` y `0x3D`. El modelo físico exacto y las conexiones se deben verificar con el equipo responsable del montaje.
 
-## Dependencias
 
-- Paquete de placas **ESP32 by Espressif Systems** (Arduino Core; versión usada por el equipo por confirmar).
-- **OneWire** (versión por confirmar).
-- **DallasTemperature** (versión por confirmar).
-- **Adafruit GFX Library** (versión por confirmar).
-- **Adafruit SSD1306** (versión por confirmar).
-- **Adafruit BusIO** (dependencia utilizada por las bibliotecas Adafruit, según instalación).
-- **Wire**, **Preferences** y **Arduino.h** (incluidas con el entorno ESP32/Arduino).
-
-Las versiones verificadas deben registrarse en el archivo [FUENTES.md](../FUENTES.md).
 
 
 ## Funcionamiento del programa

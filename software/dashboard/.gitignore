@@ -1,0 +1,16 @@
+
+# Dependencias de Node.js
+node_modules/
+
+# Contraseñas y variables privadas
+.env
+.env.*
+!.env.example
+
+# Certificados y claves privadas
+*.pem
+*.key
+
+# Archivos temporales
+*.log
+.DS_Store

@@ -50,5 +50,3 @@ El esquema de Fritzing representa las conexiones del circuito físico, mientras 
 
 ---
 
-## Notas de Diseño
-[Explicar decisiones importantes de diseño del circuito]

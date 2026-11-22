@@ -4,8 +4,9 @@
 
 ### Diagramas de Flujo
 
+El siguiente diagrama representa el funcionamiento general del firmware de AquaSafe, desde la inicialización del ESP32 hasta la lectura y visualización continua de las mediciones.
 
-**Formato:** PNG, PDF o draw.io
+![Diagrama de flujo del software AquaSafe](diagrama_flujo_aquasafe.png)
 
 ### Documentación de Funciones
 

@@ -12,14 +12,22 @@ El siguiente diagrama representa el funcionamiento general del firmware de AquaS
 
 #### Funciones Principales
 
-**función1()**
-- **Propósito:** [Descripción]
-- **Parámetros:** [Tipo y descripción]
-- **Retorna:** [Tipo y descripción]
-- **Ejemplo de uso:**
-```cpp
-// Código de ejemplo
-```
+| Función | Propósito |
+|---|---|
+| `setup()` | Inicializar periféricos y recuperar calibraciones. |
+| `loop()` | Coordinar la lectura, el cálculo, la comunicación y la pantalla. |
+| `readVoltage(pin, rawMean)` | Promediar 24 lecturas de voltaje y detectar lecturas ADC saturadas. |
+| `readTemperature()` | Leer la temperatura del DS18B20. |
+| `hasCalibration(c)` | Comprobar si hay dos referencias válidas. |
+| `convertReading(c, signal)` | Interpolar entre dos puntos de calibración. |
+| `tdsSignal(volts, temp)` | Aplicar una compensación aproximada por temperatura al TDS. |
+| `readTdsPpm(...)` | Estimar TDS mediante la curva programada y, si corresponde, ajustar con patrones. |
+| `handleCommand(...)` | Interpretar comandos de calibración. |
+| `readCommands(...)` | Recibir órdenes desde el Monitor Serie. |
+| `showOLED(...)` | Dibujar las lecturas y un estado demostrativo en la pantalla. |
+| `waterStatus(...)` | Evaluar referencias de parámetros calculados para el Monitor Serie. |
+| `demoStatus(...)` | Clasificar patrones empíricos de la demostración a partir de voltajes. |
+
 
 ---
 
@@ -57,23 +65,6 @@ El siguiente diagrama representa el funcionamiento general del firmware de AquaS
 - Causa probable: [Explicación]
 - Solución: [Pasos]
 
-## Funciones principales
-
-| Función | Propósito |
-|---|---|
-| `setup()` | Inicializar periféricos y recuperar calibraciones. |
-| `loop()` | Coordinar la lectura, el cálculo, la comunicación y la pantalla. |
-| `readVoltage(pin, rawMean)` | Promediar 24 lecturas de voltaje y detectar lecturas ADC saturadas. |
-| `readTemperature()` | Leer la temperatura del DS18B20. |
-| `hasCalibration(c)` | Comprobar si hay dos referencias válidas. |
-| `convertReading(c, signal)` | Interpolar entre dos puntos de calibración. |
-| `tdsSignal(volts, temp)` | Aplicar una compensación aproximada por temperatura al TDS. |
-| `readTdsPpm(...)` | Estimar TDS mediante la curva programada y, si corresponde, ajustar con patrones. |
-| `handleCommand(...)` | Interpretar comandos de calibración. |
-| `readCommands(...)` | Recibir órdenes desde el Monitor Serie. |
-| `showOLED(...)` | Dibujar las lecturas y un estado demostrativo en la pantalla. |
-| `waterStatus(...)` | Evaluar referencias de parámetros calculados para el Monitor Serie. |
-| `demoStatus(...)` | Clasificar patrones empíricos de la demostración a partir de voltajes. |
 
 ## Calibración mediante Monitor Serie
 

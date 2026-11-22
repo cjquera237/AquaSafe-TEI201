@@ -46,7 +46,7 @@ El firmware integra:
 
 /**
  * Función: leerTemperatura
- * Descripción: Lee temperatura del sensor DS
+ * Descripción: Lee temperatura del sensor DS18B20
  * Retorna: float - Temperatura en grados Celsius
  */
 float leerTemperatura() {

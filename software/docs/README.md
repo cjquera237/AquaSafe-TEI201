@@ -59,19 +59,6 @@ El siguiente diagrama representa el funcionamiento general del firmware de AquaS
 
 ---
 
-## Troubleshooting
-
-### Problemas Comunes
-
-**Problema 1: No conecta a WiFi**
-- Causa probable: [Explicación]
-- Solución: [Pasos]
-
-**Problema 2: Sensor no responde**
-- Causa probable: [Explicación]
-- Solución: [Pasos]
-
-
 ## Calibración mediante Monitor Serie
 
 La calibración está incorporada en el programa, pero sus resultados deben validarse mediante ensayos con patrones reales y con el circuito definitivo. Se utiliza el punto decimal (`.`).
@@ -91,14 +78,9 @@ Los comandos se envían en el Monitor Serie a **115200 baudios**, con **Nueva l�
 
 **Nota:** la conversión de TDS utiliza como base una curva nominal identificada en el código como Keyestudio KS0429. Se debe comprobar que sea aplicable al módulo instalado; sin esa confirmación, el valor en ppm es una estimación.
 
-## Manual de operación
+## Troubleshooting
 
-
-
-
-
-
-## Solución de problemas
+### Problemas Comunes
 
 | Problema | Comprobaciones iniciales |
 |---|---|
@@ -108,6 +90,8 @@ Los comandos se envían en el Monitor Serie a **115200 baudios**, con **Nueva l�
 | El TDS aparece en voltios o fuera de rango | Verificar conexión GPIO 32, divisor resistivo, calibración y compatibilidad de la curva del sensor. |
 | El Monitor Serie no muestra datos | Seleccionar el puerto del ESP32 y 115200 baudios. |
 | El comando de calibración es rechazado | Utilizar minúsculas (`ph`, `tds`, `turb`, `temp`), punto decimal y final de línea «Nueva línea». |
+
+
 
 ## Almacenamiento y limitaciones
 

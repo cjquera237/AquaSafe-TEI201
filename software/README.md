@@ -6,7 +6,7 @@ Esta carpeta contiene todo el código y documentación del software del proyecto
 ### 📁 Carpetas
 
 #### `src/`
-Código fuente del proyecto (.ino para Arduino/ESP32)
+Código fuente del proyecto [AquaSafe_ESP32.ino](AquaSafe_ESP32.ino).
 
 #### `librerias/`
 Librerías adicionales necesarias (no incluidas en Arduino IDE)
@@ -128,13 +128,7 @@ Editar las siguientes constantes en el código:
 
 ---
 
-## API / Endpoints (si aplica)
 
-| Endpoint | Método | Descripción |
-|----------|--------|-------------|
-| `/status` | GET | Estado del sistema |
-| `/data` | GET | Datos de sensores |
-| `/control` | POST | Control de actuadores |
 
 # Software de AquaSafe
 

@@ -8,9 +8,9 @@ Se incluyen los archivos del esquema elaborado en Fritzing y una simualcion comp
 
 ## 2. Esquema electrónico en Fritzing
 
-El esquema representa las consexiones entre el ESP32, los sensores de temperatura, pH, turbidez y TDS, y la pantalla OLED.
+El esquema representa las conexiones entre el ESP32, los sensores de temperatura, pH, turbidez y TDS, y la pantalla OLED.
 
-También incluye las conexiones de alimentacion y las resistencias usadas en el circuito.
+También incluye las conexiones de alimentación y las resistencias usadas en el circuito.
 
 ### Visualización del esquema
 
@@ -26,7 +26,7 @@ También incluye las conexiones de alimentacion y las resistencias usadas en el 
 
 Wokwi permite representar parte del funcionamiento de AquaSafe mediante una simulación.
 
-La simulación utiliza un ESP32, un sensor DS18B20, una pantalla OLED y tres potenciómetros que simulan ser los sensores de pH, turbidez y TDS
+La simulación utiliza un ESP32, un sensor DS18B20, una pantalla OLED y tres potenciómetros que simulan ser los sensores de pH, turbidez y TDS.
 
 ### Archivos de Wokwi
 - [Documentación de la simulación](Wokwi/README.md)

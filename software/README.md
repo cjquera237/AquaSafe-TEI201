@@ -12,7 +12,11 @@ Código fuente del proyecto [AquaSafe_ESP32.ino](AquaSafe_ESP32.ino).
 Librerías adicionales necesarias (no incluidas en Arduino IDE)
 
 #### `docs/`
-Documentación técnica del software
+
+La documentación técnica detallada del firmware AquaSafe incluye los diagramas de flujo, la descripción de las funciones principales, el manual de instalación, el manual de operación y la solución de problemas.
+
+[Consultar documentación técnica del software](docs/README.md)
+
 
 ---
 

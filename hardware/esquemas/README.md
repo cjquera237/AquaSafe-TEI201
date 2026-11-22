@@ -6,20 +6,22 @@ También incluye las conexiones de alimentacion y las resistencias usadas en el 
 
 ### Visualización del esquema
 
-![Esquema eléctrico de AquaSafe](AquaSafe_Fritzing.png)
+
 
 
 ### Archivos del circuito
 
-| Archivo | Descripción |
-|---|---|
-| [AquaSafe_Fritzing.png](AquaSafe_Fritzing.png) | Imagen del esquema eléctrico. |
-| [AquaSafe_Fritzing.fzz](AquaSafe_Fritzing.fzz) | Archivo editable del circuito en Fritzing. |
+### Esquemas en Fritzig
+-[Ver imagen del circuito](Fritzing/AquaSafe_Fritzing.png)
+-[Archivo editable de Fritzing](Fritzing/AquaSafe_Fritzing.fzz)
 
+![Esquema de AquaSafe](Fritzing/AquaSafe_Fritzing.png)
 
-
-
-
+### Simulación en Wokwi
+- [Ver archivos de Wokwi](Wokwi/README.md)
+- [Diagrama de simulación](Wokwi/diagram.json)
+- [Código Arduino](Wokwi/sketch.ino)
+- [Librerías](Wokwi/libraries.txt)
 
 ## Archivos Requeridos
 

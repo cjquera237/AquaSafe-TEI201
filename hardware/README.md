@@ -62,4 +62,14 @@ Su finalidad es facilitar la consulta de temperatura, pH, turbidez y TDS sin la 
 - Advertencias de sensores desconectados o pendientes de calibración.
 
 
+## Lista de Materiales (BOM)
+
+La BOM incluye los sensores, componentes electrónicos, materiales estructurales, proveedores y costos de AquaSafe.
+
+El desembolso conocido del grupo es de **$106.759 CLP**.
+
+- [Ver BOM en PDF](bom/bom_completo.pdf)
+- [Consultar BOM en Excel](bom/bom_completo.xlsx)
+
+
 

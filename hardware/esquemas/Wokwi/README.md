@@ -80,9 +80,12 @@ El funcionamiento general se divide en las siguentes etapas:
 La simulación presenta algunas limitaciones respecto al prototipo físico:
 
 -Los potenciómetros reemplazan las señales de los sensores de pH, turbidez y TDS.
+
 -No se reproduce el comportamiento físico completo de las sondas.
 -Los valores utilizados no constituyen calibraciones de sensores reales.
+
 -El circuito simulado no reproduce necesariamente todos los componentes eléctricos del montaje físico.
+
 -Los mensajes mostrados permiten representar situaciones de demostración, pero no certifican la seguridad del agua para consumo.
 
 Por lo tanto, Wokwi se emplea como una herramienta complementaria para comprender el funcionamiento generak del sistema AquaSafe. 

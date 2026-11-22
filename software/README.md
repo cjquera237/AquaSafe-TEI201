@@ -5,7 +5,7 @@ Esta carpeta contiene el firmware del prototipo AquaSafe, desarrollado en Arduin
 
 ### 📁 Carpetas
 
-#### `AquaSafe_ESP32.ino/`
+#### `src/`
 Código fuente del proyecto [AquaSafe_ESP32.ino](AquaSafe_ESP32.ino).
 
 #### `librerias/`

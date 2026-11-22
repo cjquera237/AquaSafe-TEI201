@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AquaSafe | Dashboard</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #eef5f8;
+      color: #17324d;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: #123b59;
+      color: white;
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; }
+
+    main {
+      max-width: 1150px;
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .tarjeta, .panel {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px #16334a15;
+    }
+
+    .tarjeta h3 {
+      margin: 0 0 12px;
+      color: #52738b;
+      font-size: 15px;
+    }
+
+    .valor {
+      font-size: 29px;
+      font-weight: bold;
+      color: #0c6980;
+    }
+
+    .panel { margin-top: 20px; }
+
+    .grafico {
+      position: relative;
+      height: 300px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 11px;
+      border-bottom: 1px solid #e2e8ee;
+    }
+
+    th { background: #eaf3f8; }
+
+    .tabla-contenedor {
+      overflow-x: auto;
+    }
+
+    .aviso {
+      color: #7a4850;
+      font-size: 13px;
+    }
+
+    #estado { color: #496b80; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>AquaSafe</h1>
+  <p>Dashboard de monitoreo de calidad del agua</p>
+</header>
+
+<main>
+
+  <p id="estado">Esperando conexión con el servidor...</p>
+
+  <section class="tarjetas">
+    <div class="tarjeta">
+      <h3>Temperatura</h3>
+      <div class="valor" id="temperatura">-- °C</div>
+    </div>
+
+    <div class="tarjeta">
+      <h3>pH</h3>
+      <div class="valor" id="ph">--</div>
+    </div>
+
+    <div class="tarjeta">
+      <h3>Turbidez</h3>
+      <div class="valor" id="turbidez">--</div>
+    </div>
+
+    <div class="tarjeta">
+      <h3>TDS</h3>
+      <div class="valor" id="tds">-- ppm</div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Historial de mediciones</h2>
+    <p>Selecciona el sensor que deseas visualizar.</p>
+
+    <label for="sensor">Sensor:</label>
+    <select id="sensor">
+      <option value="temperatura">Temperatura</option>
+      <option value="ph">pH</option>
+      <option value="turbidez">Turbidez</option>
+      <option value="tds">TDS</option>
+    </select>
+
+    <div class="grafico">
+      <canvas id="grafico"></canvas>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Últimas mediciones</h2>
+
+    <div class="tabla-contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha y hora</th>
+            <th>Sensor</th>
+            <th>Valor</th>
+            <th>Dispositivo</th>
+          </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="aviso">
+    AquaSafe es un prototipo académico.
+    Sus mediciones no certifican la potabilidad del agua.
+    Las unidades y calibraciones deben verificarse experimentalmente.
+  </p>
+
+</main>
+
+<script>
+  const nombres = {
+    temperatura: "Temperatura",
+    ph: "pH",
+    turbidez: "Turbidez",
+    tds: "TDS"
+  };
+
+  const unidades = {
+    temperatura: " °C",
+    ph: "",
+    turbidez: "",
+    tds: " ppm"
+  };
+
+  let lecturas = [];
+
+  const grafico = new Chart(
+    document.getElementById("grafico"),
+    {
+      type: "line",
+      data: {
+        labels: [],
+        datasets: [{
+          label: "Temperatura",
+          data: [],
+          borderColor: "#087e99",
+          backgroundColor: "#087e9922",
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    }
+  );
+
+  function formatearValor(lectura) {
+    return Number(lectura.valor).toFixed(2)
+      + unidades[lectura.sensor];
+  }
+
+  function actualizarGrafico() {
+    const sensor = document.getElementById("sensor").value;
+
+    const datos = lecturas
+      .filter(d => d.sensor === sensor)
+      .slice()
+      .reverse();
+
+    grafico.data.labels = datos.map(d =>
+      new Date(d.creado_en).toLocaleTimeString()
+    );
+
+    grafico.data.datasets[0].label = nombres[sensor];
+    grafico.data.datasets[0].data = datos.map(d => d.valor);
+    grafico.update();
+  }
+
+  function actualizarTarjetas() {
+    for (const sensor of Object.keys(nombres)) {
+      const ultima = lecturas.find(d => d.sensor === sensor);
+
+      document.getElementById(sensor).textContent = ultima
+        ? formatearValor(ultima)
+        : "--";
+    }
+  }
+
+  function actualizarTabla() {
+    const tabla = document.getElementById("tabla");
+    tabla.replaceChildren();
+
+    for (const lectura of lecturas.slice(0, 30)) {
+      const fila = document.createElement("tr");
+
+      const valores = [
+        new Date(lectura.creado_en).toLocaleString(),
+        nombres[lectura.sensor] || lectura.sensor,
+        formatearValor(lectura),
+        lectura.dispositivo
+      ];
+
+      for (const valor of valores) {
+        const celda = document.createElement("td");
+        celda.textContent = valor;
+        fila.appendChild(celda);
+      }
+
+      tabla.appendChild(fila);
+    }
+  }
+
+  async function actualizarDatos() {
+    try {
+      const respuesta = await fetch("/api/lecturas?limite=500");
+
+      if (!respuesta.ok) {
+        throw new Error("No se pudieron obtener lecturas");
+      }
+
+      lecturas = await respuesta.json();
+
+      actualizarTarjetas();
+      actualizarGrafico();
+      actualizarTabla();
+
+      document.getElementById("estado").textContent =
+        "Última actualización: "
+        + new Date().toLocaleTimeString()
+        + " | Lecturas disponibles: "
+        + lecturas.length;
+
+    } catch (error) {
+      document.getElementById("estado").textContent =
+        "Sin conexión con el servidor o base de datos.";
+    }
+  }
+
+  document.getElementById("sensor")
+    .addEventListener("change", actualizarGrafico);
+
+  actualizarDatos();
+  setInterval(actualizarDatos, 5000);
+</script>
+
+</body>
+</html>

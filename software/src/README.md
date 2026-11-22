@@ -4,7 +4,7 @@
 
 #### El firmware definitivo del prototipo AquaSafe se encuentra en la carpeta `software/`.
 
-### `[AquaSafe_ESP32.ino](../AquaSafe_ESP32.ino)`
+#### `[AquaSafe_ESP32.ino](../AquaSafe_ESP32.ino)`
 Archivo principal del proyecto Arduino/ESP32
 
 ## **Estructura:**
@@ -46,7 +46,7 @@ El firmware integra:
 
 /**
  * Función: leerTemperatura
- * Descripción: Lee temperatura del sensor DHT22
+ * Descripción: Lee temperatura del sensor DS
  * Retorna: float - Temperatura en grados Celsius
  */
 float leerTemperatura() {

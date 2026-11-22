@@ -33,23 +33,29 @@ El siguiente diagrama representa el funcionamiento general del firmware de AquaS
 
 ## Manual de Instalación
 
-[Paso a paso detallado para instalar y configurar el software]
 
 ---
 
 ## Manual de Operación
 
 ### Encendido del Sistema
-1. [Paso 1]
-2. [Paso 2]
+
+1. Revisar las conexiones, la alimentación y la ausencia de humedad en los componentes electrónicos.
+2. Conectar la alimentación USB al ESP32 mediante una fuente compatible. Si se utiliza el módulo Power Bank, verificar previamente la correcta instalación de las baterías y su circuito de protección.
+3. Comprobar que la pantalla OLED se inicialice. Si no responde, consultar el Monitor Serie.
 
 ### Operación Normal
-1. [Paso 1]
-2. [Paso 2]
+
+1. Situar las sondas en una muestra de agua conforme a las instrucciones de cada sensor.
+2. Esperar a que las lecturas se estabilicen.
+3. Consultar la OLED o el Monitor Serie. Revisar si los parámetros se muestran como valores calibrados, estimaciones o simples señales en voltios.
+4. No interpretar los mensajes demostrativos como certificación de potabilidad.
 
 ### Apagado del Sistema
-1. [Paso 1]
-2. [Paso 2]
+
+1. Retirar y limpiar las sondas siguiendo las recomendaciones de sus fabricantes.
+2. Desconectar la alimentación del ESP32.
+3. Guardar el prototipo con sus conexiones y sensores protegidos.
 
 ---
 
@@ -87,24 +93,10 @@ Los comandos se envían en el Monitor Serie a **115200 baudios**, con **Nueva l�
 
 ## Manual de operación
 
-### Encendido
 
-1. Revisar las conexiones, la alimentación y la ausencia de humedad en los componentes electrónicos.
-2. Conectar la alimentación USB al ESP32 mediante una fuente compatible. Si se utiliza el módulo Power Bank, verificar previamente la correcta instalación de las baterías y su circuito de protección.
-3. Comprobar que la pantalla OLED se inicialice. Si no responde, consultar el Monitor Serie.
 
-### Operación normal
 
-1. Situar las sondas en una muestra de agua conforme a las instrucciones de cada sensor.
-2. Esperar a que las lecturas se estabilicen.
-3. Consultar la OLED o el Monitor Serie. Revisar si los parámetros se muestran como valores calibrados, estimaciones o simples señales en voltios.
-4. No interpretar los mensajes demostrativos como certificación de potabilidad.
 
-### Apagado
-
-1. Retirar y limpiar las sondas siguiendo las recomendaciones de sus fabricantes.
-2. Desconectar la alimentación del ESP32.
-3. Guardar el prototipo con sus conexiones y sensores protegidos.
 
 ## Solución de problemas
 

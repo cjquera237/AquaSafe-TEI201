@@ -1,7 +1,7 @@
 # Software - Documentación
 
 ## Contenido
-Esta carpeta contiene todo el código y documentación del software del proyecto.
+Esta carpeta contiene el firmware del prototipo AquaSafe, desarrollado en Arduino/C++ para un ESP32 DevKit de 30 pines. El programa lee temperatura, pH, turbidez y TDS, procesa las señales y muestra información en una pantalla OLED y en el Monitor Serie. El dispositivo es un prototipo académico de caracterización preliminar de agua: **no certifica su potabilidad**.
 
 ### 📁 Carpetas
 
@@ -78,7 +78,7 @@ Para utilizar los sensores y componentes de AquaSafe se deben instalar las libre
 
 -Adafruit BusIO (dependencia utilizada por las bibliotecas Adafruit, según instalación).
 
--Wire,Preferences y Arduino.h (incluidas con el entorno ESP32/Arduino).
+-Wire, Preferences y Arduino.h (incluidas con el entorno ESP32/Arduino).
 
 El resto de librerías necesarias deben comprobarse segun la versión final del código, especialmente las usadas en la pantalla OLED.
 
@@ -109,7 +109,6 @@ Las mediciones se van a poder consultar mediante una pantalla OLED, y según las
 
 ## Configuración de Parámetros
 
-
 ### Calibración mediante Monitor Serie
 
 La calibración está incorporada en el programa, pero sus resultados deben validarse mediante ensayos con patrones reales y con el circuito definitivo. Se utiliza el punto decimal (`.`).
@@ -130,11 +129,7 @@ Los comandos se envían en el Monitor Serie a **115200 baudios**, con **Nueva l�
 **Nota:** la conversión de TDS utiliza como base una curva nominal identificada en el código como Keyestudio KS0429. Se debe comprobar que sea aplicable al módulo instalado; sin esa confirmación, el valor en ppm es una estimación.
 
 
-## Arquitectura del Software
-
-[Incluir diagrama de flujo o arquitectura]
-
-### Módulos Principales
+## Módulos Principales
 1. **Inicialización:**  El ESP32 prepara los sensores y la pantalla OLED (setup del sistema)
 2. **Lectura de Sensores:** obtiene información de temperatura, pH, turbidez y TDS. (captura de datos)
 3. **Procesamiento:** interpreta las señales recibidas mediante las funciones programadas. (análisis y decisiones)
@@ -143,16 +138,6 @@ Los comandos se envían en el Monitor Serie a **115200 baudios**, con **Nueva l�
 6. **Calibración:** permite almacenar parámetros de referencia necesarios para interpretar las mediciones.
 
 ---
-
-
-
-# Software de AquaSafe
-
-## Descripción
-
-Esta carpeta contiene el firmware del prototipo AquaSafe, desarrollado en Arduino/C++ para un ESP32 DevKit de 30 pines. El programa lee temperatura, pH, turbidez y TDS, procesa las señales y muestra información en una pantalla OLED y en el Monitor Serie. El dispositivo es un prototipo académico de caracterización preliminar de agua: **no certifica su potabilidad**.
-
-**Código principal:** [AquaSafe_ESP32.ino](AquaSafe_ESP32.ino).
 
 ## Hardware y pines
 

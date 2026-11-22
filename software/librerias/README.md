@@ -59,14 +59,9 @@ librerias/
 El firmware actual de AquaSafe no requiere bibliotecas personalizadas desarrolladas por el equipo. Las funciones de lectura, procesamiento, calibración y visualización se encuentran implementadas directamente en el archivo principal del programa.
 
 Las bibliotecas externas utilizadas se mantienen sin modificaciones conocidas respecto de sus distribuciones originales.
-
 Por lo tanto, no es necesario instalar manualmente una carpeta de librerías personalizadas.
 
-### Instalación Manual
-```bash
-# Copiar carpeta a Arduino libraries
-cp -r MiLibreria ~/Documents/Arduino/libraries/
-```
+
 
 ---
 

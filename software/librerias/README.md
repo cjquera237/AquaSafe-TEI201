@@ -54,7 +54,7 @@ librerias/
 │   └── README.md
 ```
 
-## Librerías Personalizadas/Modificadas
+### Librerías Personalizadas/Modificadas
 
 El firmware actual de AquaSafe no requiere bibliotecas personalizadas desarrolladas por el equipo. Las funciones de lectura, procesamiento, calibración y visualización se encuentran implementadas directamente en el archivo principal del programa.
 
@@ -69,11 +69,6 @@ cp -r MiLibreria ~/Documents/Arduino/libraries/
 ```
 
 ---
-
-## Dependencias Completas
-
-Listar TODAS las librerías necesarias con versiones exactas:
-
 
 ## Dependencias Completas
 
@@ -97,4 +92,4 @@ La siguiente tabla reúne las dependencias necesarias para utilizar el firmware 
 - Versión del paquete ESP32: pendiente de confirmar.
 - Velocidad del Monitor Serie: 115200 baudios.
 
-Las versiones exactas deben verificarse en el computador donde se desarrolló y compiló el programa.
+

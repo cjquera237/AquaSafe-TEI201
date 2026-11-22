@@ -4,7 +4,7 @@
 
 Esta carpeta contiene la documentación de las conexiones electrónicas del prototipo AquaSafe 
 
-Se incluyen los archivos del esquema elaborado en Fritzing y una simualcion complementaria hecha en Wokwi.
+Se incluyen los archivos del esquema elaborado en Fritzing y una simulación complementaria hecha en Wokwi.
 
 ## 2. Esquema electrónico en Fritzing
 

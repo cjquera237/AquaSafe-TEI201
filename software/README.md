@@ -109,21 +109,26 @@ Las mediciones se van a poder consultar mediante una pantalla OLED, y según las
 
 ## Configuración de Parámetros
 
-Editar las siguientes constantes en el código:
 
-```cpp
-// WiFi
-#define WIFI_SSID "tu_red"
-#define WIFI_PASS "tu_password"
+### Calibración mediante Monitor Serie
 
-// Sensores
-#define SENSOR_PIN 4
-#define SAMPLE_RATE 1000
+La calibración está incorporada en el programa, pero sus resultados deben validarse mediante ensayos con patrones reales y con el circuito definitivo. Se utiliza el punto decimal (`.`).
 
-// Otros parámetros
+| Comando de ejemplo | Función |
+|---|---|
+| `ayuda` | Mostrar instrucciones de uso. |
+| `ph 1 4.01` | Registrar el primer patrón de pH; utilizar el valor real de la solución. |
+| `ph 2 9.18` | Registrar el segundo patrón de pH; utilizar el valor real de la solución. |
+| `tds 1 VALOR` | Registrar el primer patrón de TDS. |
+| `tds 2 VALOR` | Registrar el segundo patrón de TDS. |
+| `turb 1 VALOR` | Registrar el primer patrón de turbidez. |
+| `turb 2 VALOR` | Registrar el segundo patrón de turbidez. |
+| `temp VALOR` | Aplicar un ajuste de temperatura con un termómetro de referencia; al hacerlo se invalida la calibración de TDS y debe repetirse. |
+
+Los comandos se envían en el Monitor Serie a **115200 baudios**, con **Nueva línea**. Cada comando de calibración utiliza la señal actual del sensor; por eso se debe esperar a que se estabilice en su solución patrón.
+
+**Nota:** la conversión de TDS utiliza como base una curva nominal identificada en el código como Keyestudio KS0429. Se debe comprobar que sea aplicable al módulo instalado; sin esa confirmación, el valor en ppm es una estimación.
 ```
-
----
 
 ## Arquitectura del Software
 

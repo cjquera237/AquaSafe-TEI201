@@ -1,54 +1,18 @@
-# Renders de Alta Calidad
+# Renders y vistas
 
-## Renders Requeridos (Mínimo 4 ángulos)
+Los renders se hicieron en el espacio Render de Fusion 360, a 1920 × 1080, con una apariencia distinta para cada tipo de componente.
 
-### 1. Vista Isométrica Frontal
-`01_isometrica_frontal.png`
-- Muestra exterior completo
-- Iluminación clara
-- Resolución: 1920×1080 mínimo
+| Archivo | Qué muestra |
+|---|---|
+| `render_exterior.png` | Caja cerrada con las sondas saliendo por los prensaestopas |
+| `render_interior.png` | Interior sin tapa |
+| `render_explosionado.png` | Tapa, módulos y placa separados de la caja |
+| `vista_interior_iso.png` | Vista isométrica del interior |
+| `vista_superior_sin_tapa.png` | Vista superior: la disposición de los módulos es la misma del prototipo real |
+| `placa_con_modulos.png` | Placa de acrílico con todos los módulos, fuera de la caja |
+| `fusion_arbol_componentes.jpg` | Navegador de Fusion 360 con los componentes del ensamble |
+| `fusion_parametros.jpg` | Parámetros de usuario del diseño |
 
-### Renders Opcionales (Recomendados)
-- `02_detalle_sensores.png` - Close-up de sensores
-- `03_ensamble_explosionado.png` - Componentes separados
-- `04_variantes_color.png` - Si hay opciones de diseño
-
----
-
-## Configuración de Render en Fusion 360
-
-### Settings Recomendados
-- **Render Engine:** Local / Cloud
-- **Environment:** [Tipo de iluminación]
-- **Resolution:** 1920×1080 o superior
-- **Quality:** High
-- **Exposure:** [Ajustado para visibilidad]
-- **Effects:** Ambient Occlusion ON
-
-### Materiales y Apariencias
-Asignar materiales realistas:
-- Plástico: PLA/ABS mate o satinado
-- Electrónica: PCB verde, componentes negros
-- Metales: Tornillos acero inoxidable
-
----
-
-## Nomenclatura de Archivos
-```
-[numero]_[descripcion]_[version].png
-
-Ejemplo:
-01_isometrica_frontal_v3.png
-```
-
----
-
-## Checklist de Calidad
-
-- [ ] Resolución mínima 1920×1080
-- [ ] Formato PNG (con transparencia si aplica)
-- [ ] Iluminación sin sombras excesivas
-- [ ] Componentes internos visibles en corte
-- [ ] Fondo neutro o contextual apropiado
-- [ ] Sin aliasing o bordes pixelados
-- [ ] Todos los componentes críticos visibles
+![Exterior](render_exterior.png)
+![Interior](render_interior.png)
+![Explosionado](render_explosionado.png)

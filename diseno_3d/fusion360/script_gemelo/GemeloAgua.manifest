@@ -1,0 +1,10 @@
+{
+  "autodeskProduct": "Fusion360",
+  "type": "script",
+  "author": "TEI201",
+  "description": {
+    "": "Gemelo 3D - Monitor IoT de calidad de agua (ESP32, pH, turbidez, DS18B20, 2x18650)"
+  },
+  "supportedOS": "windows|mac",
+  "editEnabled": true
+}

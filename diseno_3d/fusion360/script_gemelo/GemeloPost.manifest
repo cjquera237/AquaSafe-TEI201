@@ -1,0 +1,10 @@
+{
+  "autodeskProduct": "Fusion360",
+  "type": "script",
+  "author": "TEI201",
+  "description": {
+    "": "Post-proceso gemelo: guardar, exportar f3d, renders e imagenes"
+  },
+  "supportedOS": "windows|mac",
+  "editEnabled": true
+}

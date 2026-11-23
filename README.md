@@ -362,9 +362,9 @@ Las casillas indican el avance respecto de los requisitos establecidos para TEI2
 ### Diseño 3D
 
 - [ ] Archivos Fusion 360 (.f3d) con todos los componentes.
-- [ ] Renders de alta calidad.
-- [ ] Planos técnicos.
-- [ ] Diseño de encapsulado portátil.
+- [x] Renders de alta calidad.
+- [x] Planos técnicos.
+- [x] Diseño de encapsulado portátil.
 
 ### Testing
 

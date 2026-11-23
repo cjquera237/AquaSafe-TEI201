@@ -18,6 +18,17 @@ La documentación técnica detallada del firmware AquaSafe incluye los diagramas
 
 [Consultar documentación técnica del software](docs/README.md)
 
+#### `AquaSafe_dashboard/`
+Versión del firmware con **dashboard local, sin internet**. Es el mismo `AquaSafe_ESP32.ino`, con la lectura de sensores, la calibración y la OLED sin cambios, más tres funciones nuevas:
+- el ESP32 crea su propia red WiFi **AquaSafe** (clave `aquasafe2026`);
+- guarda una medición cada 10 s en `datos.csv`, en su memoria flash (LittleFS);
+- sirve una página con la lectura actual, alertas y gráficos históricos en **http://192.168.4.1**.
+
+Funciona en terreno, donde no hay señal. Instrucciones en [AquaSafe_dashboard/README.md](AquaSafe_dashboard/README.md).
+
+#### `dashboard/`
+Servidor web con base de datos PostgreSQL para guardar y mostrar las mediciones en la nube (en desarrollo).
+
 
 ---
 

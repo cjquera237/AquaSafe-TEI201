@@ -2,7 +2,7 @@
 
 ## Formato del Documento
 
-**Archivo:** `reporte_final_v3.pdf`
+**Archivo:** [Ver informe final de AquaSafe](
 
 **Especificaciones:**
 - Formato: PDF

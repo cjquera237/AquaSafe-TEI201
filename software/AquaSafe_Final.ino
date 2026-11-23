@@ -142,7 +142,7 @@ static void dashboardTask(void *) {
     postReading(client, "temperatura", readings.temperature, "°C");
     postReading(client, "ph", readings.ph, "V");
     postReading(client, "turbidez", readings.turbidity, "V");
-    postReading(client, "tds", readings.tds, readings.tdsInPpm ? "ppm" : "V");
+    postReading(client, "tds", readings.tds, readings.tdsInPpm ? "V");
     // estado_demo se muestra en OLED; no se envia porque la API no admite ese sensor.
   }
 }

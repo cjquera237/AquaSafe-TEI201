@@ -13,9 +13,10 @@ Esta carpeta contiene la documentación final del proyecto para la entrega del A
 
 Reporte completo del proyecto (máximo 15 páginas)
 
-#### `presentacion/`
-Slides de la presentación final
+#### `presentacion/` 
+Diapositivas de la presentación
 [Ver presentación AquaSafe](https://github.com/cjquera237/AquaSafe-TEI201/blob/main/documentacion/presentacion/AquaSafe_presentaci%C3%B3n.pdf).
+
 ---
 
 ## Documentos Principales

@@ -2,7 +2,7 @@
 
 ## Formato de la Presentación
 
-**Archivo:** [AquaSafe_presentacion](AquaSafe_presentación).
+**Archivo:** [AquaSafe_presentacion](https://github.com/cjquera237/AquaSafe-TEI201/blob/main/documentacion/presentacion/AquaSafe_presentaci%C3%B3n.pdf).
 
 **Especificaciones:**
 - Duración: 10 minutos

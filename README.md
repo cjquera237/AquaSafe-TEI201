@@ -337,8 +337,30 @@ Desarrollar un dispositivo portátil que permita a los usuarios outdoor consulta
 La evaluación de usabilidad no demuestra por sí misma una mejora en la calidad del agua.
 
 ---
+## 10. Dashboard web de AquaSafe
 
-## 10. Checklist de Entrega
+AquaSafe dispone de un dashboard desarrollado para visualizar mediciones de temperatura, pH, turbidez y TDS.
+
+La plataforma utiliza:
+- Railway: servidor web y API.
+- Aiven PostgreSQL: almacenamiento histórico.
+- GitHub: repositorio del código fuente.
+
+### Acceso al dashboard
+
+[Ver dashboard de AquaSafe](https://aquasafe-tei201-production.up.railway.app/)
+
+[Consultar código del dashboard](software/dashboard/)
+
+### Estado de funcionamiento
+
+Se verificó que la API puede recibir una medición de prueba, almacenarla en PostgreSQL y visualizarla en el dashboard.
+
+**Pendiente:** conectar el ESP32 físico para el envío automático de mediciones reales.
+
+La medición utilizada durante la prueba fue simulada y no representa un resultado experimental.
+
+## 11. Checklist de Entrega
 
 Las casillas indican el avance respecto de los requisitos establecidos para TEI201.
 
@@ -385,7 +407,7 @@ Las casillas indican el avance respecto de los requisitos establecidos para TEI2
 
 ---
 
-## 11. Próximos Objetivos
+## 12. Próximos Objetivos
 
 La siguiente etapa del proyecto se centrará en completar las funciones del prototipo y mejorar su facilidad de utilización.
 
@@ -401,7 +423,7 @@ La siguiente etapa del proyecto se centrará en completar las funciones del prot
 
 ---
 
-## 12. Limitaciones del Sistema
+## 13. Limitaciones del Sistema
 
 AquaSafe es un prototipo académico en desarrollo.
 
@@ -413,7 +435,7 @@ Especialmente, el dispositivo no detecta por sí mismo microorganismos patógeno
 
 ---
 
-## 13. Licencia
+## 14. Licencia
 
 Este proyecto se desarrolla como parte del curso **TEI201 – Taller de Diseño en Ingeniería**, de la Facultad de Ingeniería y Ciencias de la Universidad Adolfo Ibáñez.
 

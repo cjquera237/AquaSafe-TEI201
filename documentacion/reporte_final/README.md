@@ -2,7 +2,7 @@
 
 ## Formato del Documento
 
-**Archivo:** [Ver informe final de AquaSafe](
+**Archivo:** [Ver informe final de AquaSafe](https://github.com/cjquera237/AquaSafe-TEI201/blob/main/documentacion/reporte_final/Informe_final_AquaSafe.pdf)
 
 **Especificaciones:**
 - Formato: PDF

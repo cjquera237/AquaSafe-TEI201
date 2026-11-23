@@ -3,14 +3,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>AquaSafe | Dashboard</title>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -26,8 +29,13 @@
       text-align: center;
     }
 
-    header h1 { margin: 0 0 8px; }
-    header p { margin: 0; }
+    header h1 {
+      margin: 0 0 8px;
+    }
+
+    header p {
+      margin: 0;
+    }
 
     main {
       max-width: 1150px;
@@ -37,11 +45,13 @@
 
     .tarjetas {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
     }
 
-    .tarjeta, .panel {
+    .tarjeta,
+    .panel {
       background: white;
       border-radius: 12px;
       padding: 20px;
@@ -58,13 +68,27 @@
       font-size: 29px;
       font-weight: bold;
       color: #0c6980;
+      overflow-wrap: anywhere;
     }
 
-    .panel { margin-top: 20px; }
+    .detalle {
+      font-size: 12px;
+      color: #61798a;
+      margin-top: 10px;
+    }
+
+    .panel {
+      margin-top: 20px;
+    }
 
     .grafico {
       position: relative;
       height: 300px;
+    }
+
+    select {
+      padding: 6px;
+      margin: 4px 0 14px;
     }
 
     table {
@@ -72,13 +96,16 @@
       border-collapse: collapse;
     }
 
-    th, td {
+    th,
+    td {
       text-align: left;
       padding: 11px;
       border-bottom: 1px solid #e2e8ee;
     }
 
-    th { background: #eaf3f8; }
+    th {
+      background: #eaf3f8;
+    }
 
     .tabla-contenedor {
       overflow-x: auto;
@@ -87,9 +114,12 @@
     .aviso {
       color: #7a4850;
       font-size: 13px;
+      line-height: 1.6;
     }
 
-    #estado { color: #496b80; }
+    #estado {
+      color: #496b80;
+    }
   </style>
 </head>
 
@@ -102,35 +132,60 @@
 
 <main>
 
-  <p id="estado">Esperando conexión con el servidor...</p>
+  <p id="estado">
+    Conectando con el servidor...
+  </p>
+
+  <!-- TARJETAS DE LOS CUATRO SENSORES -->
 
   <section class="tarjetas">
+
     <div class="tarjeta">
       <h3>Temperatura</h3>
-      <div class="valor" id="temperatura">-- °C</div>
+      <div class="valor" id="temperatura">--</div>
+      <div class="detalle" id="info-temperatura">
+        Esperando medición
+      </div>
     </div>
 
     <div class="tarjeta">
       <h3>pH</h3>
       <div class="valor" id="ph">--</div>
+      <div class="detalle" id="info-ph">
+        Esperando medición
+      </div>
     </div>
 
     <div class="tarjeta">
       <h3>Turbidez</h3>
       <div class="valor" id="turbidez">--</div>
+      <div class="detalle" id="info-turbidez">
+        Esperando medición
+      </div>
     </div>
 
     <div class="tarjeta">
       <h3>TDS</h3>
-      <div class="valor" id="tds">-- ppm</div>
+      <div class="valor" id="tds">--</div>
+      <div class="detalle" id="info-tds">
+        Esperando medición
+      </div>
     </div>
+
   </section>
+
+  <!-- HISTORIAL -->
 
   <section class="panel">
     <h2>Historial de mediciones</h2>
-    <p>Selecciona el sensor que deseas visualizar.</p>
+
+    <p>
+      Selecciona el sensor y la unidad
+      que deseas visualizar.
+    </p>
 
     <label for="sensor">Sensor:</label>
+
     <select id="sensor">
       <option value="temperatura">Temperatura</option>
       <option value="ph">pH</option>
@@ -138,10 +193,18 @@
       <option value="tds">TDS</option>
     </select>
 
+    <label for="unidad">Unidad:</label>
+
+    <select id="unidad">
+      <option value="">Sin datos</option>
+    </select>
+
     <div class="grafico">
       <canvas id="grafico"></canvas>
     </div>
   </section>
+
+  <!-- TABLA -->
 
   <section class="panel">
     <h2>Últimas mediciones</h2>
@@ -153,9 +216,11 @@
             <th>Fecha y hora</th>
             <th>Sensor</th>
             <th>Valor</th>
+            <th>Unidad</th>
             <th>Dispositivo</th>
           </tr>
         </thead>
+
         <tbody id="tabla"></tbody>
       </table>
     </div>
@@ -164,12 +229,22 @@
   <p class="aviso">
     AquaSafe es un prototipo académico.
     Sus mediciones no certifican la potabilidad del agua.
-    Las unidades y calibraciones deben verificarse experimentalmente.
+
+    Las señales expresadas en voltios
+    no equivalen a valores calibrados
+    de pH, turbidez o TDS.
+
+    Los resultados deben validarse
+    experimentalmente.
   </p>
 
 </main>
 
 <script>
+  // ========================================
+  // CONFIGURACION GENERAL
+  // ========================================
+
   const nombres = {
     temperatura: "Temperatura",
     ph: "pH",
@@ -177,14 +252,57 @@
     tds: "TDS"
   };
 
-  const unidades = {
-    temperatura: " °C",
-    ph: "",
-    turbidez: "",
-    tds: " ppm"
-  };
-
   let lecturas = [];
+
+  // ========================================
+  // FORMATEAR UN VALOR
+  // ========================================
+
+  function formatearValor(lectura) {
+    const numero = Number(lectura.valor);
+
+    if (!Number.isFinite(numero)) {
+      return "--";
+    }
+
+    const valor = numero.toLocaleString("es-CL", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 3
+    });
+
+    if (!lectura.unidad) {
+      return valor + " (unidad no informada)";
+    }
+
+    return valor + " " + lectura.unidad;
+  }
+
+  // ========================================
+  // EXPLICACION DEL TIPO DE MEDICION
+  // ========================================
+
+  function descripcionMedicion(lectura) {
+    if (!lectura) {
+      return "Esperando medición";
+    }
+
+    if (!lectura.unidad) {
+      return "Unidad no informada";
+    }
+
+    if (
+      lectura.unidad === "V" &&
+      lectura.sensor !== "temperatura"
+    ) {
+      return "Señal eléctrica sin calibrar";
+    }
+
+    return "Última medición recibida";
+  }
+
+  // ========================================
+  // CREAR GRAFICO
+  // ========================================
 
   const grafico = new Chart(
     document.getElementById("grafico"),
@@ -198,47 +316,125 @@
           borderColor: "#087e99",
           backgroundColor: "#087e9922",
           tension: 0.3,
-          fill: true
+          fill: true,
+          pointRadius: 3
         }]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true
+          }
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Valor"
+            }
+          }
+        }
       }
     }
   );
 
-  function formatearValor(lectura) {
-    return Number(lectura.valor).toFixed(2)
-      + unidades[lectura.sensor];
+  // ========================================
+  // ACTUALIZAR TARJETAS
+  // ========================================
+
+  function actualizarTarjetas() {
+    for (const sensor of Object.keys(nombres)) {
+      const ultima = lecturas.find(
+        d => d.sensor === sensor
+      );
+
+      document.getElementById(sensor).textContent =
+        ultima ? formatearValor(ultima) : "--";
+
+      document.getElementById(
+        "info-" + sensor
+      ).textContent = descripcionMedicion(ultima);
+    }
   }
+
+  // ========================================
+  // ACTUALIZAR OPCIONES DE UNIDADES
+  // ========================================
+
+  function actualizarUnidades() {
+    const sensor = document.getElementById("sensor").value;
+    const selector = document.getElementById("unidad");
+    const anterior = selector.value;
+
+    const unidades = [
+      ...new Set(
+        lecturas
+          .filter(d => d.sensor === sensor)
+          .map(d => d.unidad || "")
+      )
+    ];
+
+    selector.replaceChildren();
+
+    if (unidades.length === 0) {
+      const opcion = new Option("Sin datos", "");
+      selector.add(opcion);
+      return;
+    }
+
+    for (const unidad of unidades) {
+      const texto = unidad || "Unidad no informada";
+      selector.add(new Option(texto, unidad));
+    }
+
+    if (unidades.includes(anterior)) {
+      selector.value = anterior;
+    } else {
+      selector.value = unidades[0];
+    }
+  }
+
+  // ========================================
+  // ACTUALIZAR HISTORIAL
+  // ========================================
 
   function actualizarGrafico() {
     const sensor = document.getElementById("sensor").value;
+    const unidad = document.getElementById("unidad").value;
 
+    // Filtrar por sensor Y unidad.
+    // No mezclar voltios con ppm, pH o UNT.
     const datos = lecturas
-      .filter(d => d.sensor === sensor)
+      .filter(d =>
+        d.sensor === sensor &&
+        (d.unidad || "") === unidad
+      )
       .slice()
       .reverse();
 
     grafico.data.labels = datos.map(d =>
-      new Date(d.creado_en).toLocaleTimeString()
+      new Date(d.creado_en).toLocaleString("es-CL")
     );
 
-    grafico.data.datasets[0].label = nombres[sensor];
-    grafico.data.datasets[0].data = datos.map(d => d.valor);
+    grafico.data.datasets[0].label =
+      nombres[sensor] +
+      (unidad ? " (" + unidad + ")" : " (sin unidad)");
+
+    grafico.data.datasets[0].data = datos.map(
+      d => Number(d.valor)
+    );
+
+    grafico.options.scales.y.title.text =
+      unidad || "Unidad no informada";
+
     grafico.update();
   }
 
-  function actualizarTarjetas() {
-    for (const sensor of Object.keys(nombres)) {
-      const ultima = lecturas.find(d => d.sensor === sensor);
-
-      document.getElementById(sensor).textContent = ultima
-        ? formatearValor(ultima)
-        : "--";
-    }
-  }
+  // ========================================
+  // ACTUALIZAR TABLA
+  // ========================================
 
   function actualizarTabla() {
     const tabla = document.getElementById("tabla");
@@ -248,9 +444,12 @@
       const fila = document.createElement("tr");
 
       const valores = [
-        new Date(lectura.creado_en).toLocaleString(),
+        new Date(lectura.creado_en).toLocaleString("es-CL"),
         nombres[lectura.sensor] || lectura.sensor,
-        formatearValor(lectura),
+        Number(lectura.valor).toLocaleString("es-CL", {
+          maximumFractionDigits: 3
+        }),
+        lectura.unidad || "No informada",
         lectura.dispositivo
       ];
 
@@ -264,37 +463,65 @@
     }
   }
 
+  // ========================================
+  // CONSULTAR DATOS DE RAILWAY
+  // ========================================
+
   async function actualizarDatos() {
     try {
-      const respuesta = await fetch("/api/lecturas?limite=500");
+      const respuesta = await fetch(
+        "/api/lecturas?limite=500",
+        { cache: "no-store" }
+      );
 
       if (!respuesta.ok) {
-        throw new Error("No se pudieron obtener lecturas");
+        throw new Error("Error al consultar la API");
       }
 
-      lecturas = await respuesta.json();
+      const datos = await respuesta.json();
+
+      if (!Array.isArray(datos)) {
+        throw new Error("Respuesta inesperada");
+      }
+
+      lecturas = datos;
 
       actualizarTarjetas();
+      actualizarUnidades();
       actualizarGrafico();
       actualizarTabla();
 
       document.getElementById("estado").textContent =
-        "Última actualización: "
-        + new Date().toLocaleTimeString()
-        + " | Lecturas disponibles: "
-        + lecturas.length;
+        "Última actualización: " +
+        new Date().toLocaleTimeString("es-CL") +
+        " | Lecturas disponibles: " +
+        lecturas.length;
 
     } catch (error) {
+      console.error(error);
+
       document.getElementById("estado").textContent =
-        "Sin conexión con el servidor o base de datos.";
+        "Sin conexión con el servidor o la base de datos.";
     }
   }
 
+  // ========================================
+  // EVENTOS
+  // ========================================
+
   document.getElementById("sensor")
+    .addEventListener("change", () => {
+      actualizarUnidades();
+      actualizarGrafico();
+    });
+
+  document.getElementById("unidad")
     .addEventListener("change", actualizarGrafico);
 
+  // Cargar datos y actualizar cada 5 segundos.
   actualizarDatos();
   setInterval(actualizarDatos, 5000);
+
 </script>
 
 </body>

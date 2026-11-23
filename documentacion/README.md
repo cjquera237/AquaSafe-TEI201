@@ -8,7 +8,7 @@ Esta carpeta contiene la documentación final del proyecto para la entrega del A
 
 ##  Carpetas
 
-#### `reporte_final/`
+#### 
 Reporte completo del proyecto (máximo 15 páginas)
 
 #### `presentacion/`

@@ -6,7 +6,8 @@ Esta carpeta contiene el firmware del prototipo AquaSafe, desarrollado en Arduin
 ### 📁 Carpetas
 
 #### `src/`
-Código fuente del proyecto [Código final](
+Código fuente del proyecto [Código final](https://github.com/cjquera237/AquaSafe-TEI201/blob/main/software/AquaSafe_Final.ino)
+
 
 #### `librerias/`
 En esta carpeta se encuentran todas las librerías usadas en la programacipon del prototipo de AquaSafe.
@@ -19,7 +20,7 @@ La documentación técnica detallada del firmware AquaSafe incluye los diagramas
 [Consultar documentación técnica del software](docs/README.md)
 
 #### `AquaSafe_dashboard/`
-Versión del firmware con **dashboard local, sin internet**. Es el mismo `AquaSafe_ESP32.ino`, con la lectura de sensores, la calibración y la OLED sin cambios, más tres funciones nuevas:
+Versión del firmware con **dashboard local, sin internet**. Es el mismo `AquaSafe_Final.ino`, con la lectura de sensores, la calibración y la OLED sin cambios, más tres funciones nuevas:
 - el ESP32 crea su propia red WiFi **AquaSafe** (clave `aquasafe2026`);
 - guarda una medición cada 10 s en `datos.csv`, en su memoria flash (LittleFS);
 - sirve una página con la lectura actual, alertas y gráficos históricos en **http://192.168.4.1**.
@@ -97,7 +98,7 @@ El resto de librerías necesarias deben comprobarse segun la versión final del 
 ### 4. Cargar el código al ESP32
 
 1. Conectar el ESP32 al computador mediante un cable USB.
-2. Abrir el archivo `src/main.ino` del programa de AquaSafe en Arduino IDE.
+2. Abrir el archivo `src/AquaSafe_Final.ino` del programa de AquaSafe en Arduino IDE.
 3. Seleccionar el modelo de placa ESP-WROOM-32.
 4. Seleccionar el puerto al que está conectado.
 5. Presionar "Verificar" para comprobar que el código compile.

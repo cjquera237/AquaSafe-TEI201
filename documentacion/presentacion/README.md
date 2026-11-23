@@ -2,7 +2,7 @@
 
 ## Formato de la Presentación
 
-**Archivo:** `presentacion_avance3.pdf` o `.pptx`
+**Archivo:** [AquaSafe_presentacion](AquaSafe_presentación).
 
 **Especificaciones:**
 - Duración: 10 minutos

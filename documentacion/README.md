@@ -8,7 +8,9 @@ Esta carpeta contiene la documentación final del proyecto para la entrega del A
 
 ##  Carpetas
 
-#### 
+#### `reporte_final/`
+Ver informe final de AquaSafe](https://github.com/cjquera237/AquaSafe-TEI201/blob/main/documentacion/reporte_final/Informe_final_AquaSafe.pdf)
+
 Reporte completo del proyecto (máximo 15 páginas)
 
 #### `presentacion/`

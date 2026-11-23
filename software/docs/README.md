@@ -37,7 +37,8 @@ El siguiente diagrama representa el funcionamiento general del firmware de AquaS
 
 1. Instalar Arduino IDE y el paquete de placas ESP32 de Espressif.
 2. Desde el Gestor de bibliotecas, instalar OneWire, DallasTemperature, Adafruit GFX Library y Adafruit SSD1306, junto con sus dependencias.
-3. Abrir el archivo [AquaSafe_Final.ino](
+3. Abrir el archivo [AquaSafe_Final.ino](https://github.com/cjquera237/AquaSafe-TEI201/blob/main/software/AquaSafe_Final.ino)
+
  en Arduino IDE.
 4. Conectar el ESP32 mediante USB, seleccionar la placa y el puerto correspondientes.
 5. Verificar y cargar el código. Si la carga o compilación falla, revisar el modelo de placa y las versiones de las bibliotecas.

@@ -16,9 +16,9 @@
 #include <freertos/task.h>
 
 // Completar solo en la copia local que se sube al ESP32.
-constexpr char WIFI_CLEMENTE[] = "iPhone clemente";
+constexpr char WIFI_CLEMENTE[] = "";
 constexpr char WIFI_PASSWORD_CLEMENTE[] = "";
-constexpr char WIFI_NICOLAS[] = "iPhone de Nicolas";
+constexpr char WIFI_NICOLAS[] = "";
 constexpr char WIFI_PASSWORD_NICOLAS[] = "";
 constexpr char API_KEY[] = "";
 constexpr char DEVICE_ID[] = "AquaSafe-01";
@@ -88,7 +88,7 @@ DisplayReadings makeDisplayReadings(float temp, float phV, float tdsV, float tds
 
 static QueueHandle_t dashboardQueue = nullptr;
 
-static void postReading(WiFiClientSecure &client, const char *sensor, const char *reading) {
+static void postReading(WiFiClientSecure &client, const char *sensor, const char *reading, const char *unidad) {
   char *unit = nullptr;
   const float value = strtof(reading, &unit);
   if (unit == reading || !isfinite(value)) {
@@ -96,11 +96,11 @@ static void postReading(WiFiClientSecure &client, const char *sensor, const char
     return;
   }
 
-  // Conservar los digitos de la OLED. La API actual solo recibe el valor numerico.
+  // Conservar los digitos de la OLED e informar la unidad a la API.
   char json[144];
   const int length = snprintf(json, sizeof(json),
-                              "{\"dispositivo\":\"%s\",\"sensor\":\"%s\",\"valor\":%.*s}",
-                              DEVICE_ID, sensor, static_cast<int>(unit - reading), reading);
+                              "{\"dispositivo\":\"%s\",\"sensor\":\"%s\",\"valor\":%.*s,\"unidad\":\"%s\"}",
+                              DEVICE_ID, sensor, static_cast<int>(unit - reading), reading, unidad);
   if (length < 0 || static_cast<size_t>(length) >= sizeof(json)) return;
 
   HTTPClient http;
@@ -139,12 +139,11 @@ static void dashboardTask(void *) {
 
     Serial.printf("Dashboard OLED: Temp %s | pH %s | Turbidez %s | TDS %s | %s\n",
                   readings.temperature, readings.ph, readings.turbidity, readings.tds, readings.status);
-    postReading(client, "temperatura", readings.temperature);
-    postReading(client, "ph", readings.ph);
-    postReading(client, "turbidez", readings.turbidity);
-    postReading(client, "tds", readings.tds);
-    // La API actual guarda valores numericos. El dashboard puede traducir este estado.
-    postReading(client, "estado_demo", strcmp(readings.status, "REF. POTABLE") == 0 ? "1" : "0");
+    postReading(client, "temperatura", readings.temperature, "°C");
+    postReading(client, "ph", readings.ph, "V");
+    postReading(client, "turbidez", readings.turbidity, "V");
+    postReading(client, "tds", readings.tds, readings.tdsInPpm ? "ppm" : "V");
+    // estado_demo se muestra en OLED; no se envia porque la API no admite ese sensor.
   }
 }
 

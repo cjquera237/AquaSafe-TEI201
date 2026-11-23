@@ -40,8 +40,11 @@ El siguiente diagrama representa el funcionamiento general del firmware de AquaS
 3. Abrir el archivo [AquaSafe_Final.ino](https://github.com/cjquera237/AquaSafe-TEI201/blob/main/software/AquaSafe_Final.ino)
 
  en Arduino IDE.
+
 4. Conectar el ESP32 mediante USB, seleccionar la placa y el puerto correspondientes.
+
 5. Verificar y cargar el código. Si la carga o compilación falla, revisar el modelo de placa y las versiones de las bibliotecas.
+
 6. Abrir el Monitor Serie a **115200 baudios**, con final de línea **Nueva línea**.
 
 **Precaución:** antes de energizar el circuito, verificar que las señales que llegan a los GPIO del ESP32 respeten los límites eléctricos y que los divisores de voltaje correspondan al montaje final.

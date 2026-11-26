@@ -172,6 +172,38 @@ app.post("/api/lecturas", revisarClave, async (req, res) => {
   }
 });
 
+// Muestra atomica: todas las filas comparten la misma fecha de PostgreSQL.
+app.post("/api/lecturas/muestra", revisarClave, async (req, res) => {
+  const b = req.body || {};
+  const filas = [
+    ["temperatura", b.temperatura, "°C"],
+    ["ph", b.ph, b.phUnidad],
+    ["turbidez", b.turbidez, b.turbUnidad],
+    ["tds", b.tds, b.tdsUnidad]
+  ];
+  if (typeof b.dispositivo !== "string" || !b.dispositivo.trim() || b.dispositivo.length > 50 ||
+      !Number.isInteger(b.estado) || b.estado < 0 || b.estado > 5 ||
+      filas.some(([sensor, valor, unidad]) => !unidadesPermitidas[sensor].includes(unidad) ||
+        (valor !== null && (typeof valor !== "number" || !Number.isFinite(valor))))) {
+    return res.status(400).json({error: "Muestra invalida"});
+  }
+  const validas = filas.filter(f => f[1] !== null);
+  validas.push(["estado_agua", b.estado, "codigo"]);
+  const args = [];
+  const values = validas.map(([sensor, valor, unidad]) => {
+    const i = args.length;
+    args.push(b.dispositivo.trim(), sensor, valor, unidad);
+    return `($${i+1}, $${i+2}, $${i+3}, $${i+4})`;
+  });
+  try {
+    await pool.query(`INSERT INTO lecturas (dispositivo, sensor, valor, unidad) VALUES ${values.join(",")}`, args);
+    res.status(201).json({ok:true});
+  } catch (error) {
+    console.error("Error muestra:", error.message);
+    res.status(500).json({error:"No se pudo guardar la muestra"});
+  }
+});
+
 // ========================================
 // CONSULTAR HISTORIAL
 // ========================================
@@ -196,9 +228,10 @@ app.get("/api/lecturas", async (req, res) => {
          unidad,
          creado_en
        FROM lecturas
+       WHERE ($2::text IS NULL OR dispositivo = $2)
        ORDER BY id DESC
        LIMIT $1`,
-      [limite]
+      [limite, typeof req.query.dispositivo === "string" ? req.query.dispositivo : null]
     );
 
     res.json(resultado.rows);

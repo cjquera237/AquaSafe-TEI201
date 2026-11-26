@@ -10,119 +10,99 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+    :root {
+      color-scheme: light;
+      --bg:#eef3f7;
+      --panel:#ffffff;
+      --panel-2:#f8fbfd;
+      --border:#d7e2ec;
+      --text:#17324d;
+      --muted:#5e7892;
+      --blue:#1992d4;
+      --shadow:0 10px 26px rgba(23,50,77,0.08);
     }
-
-    body {
-      margin: 0;
-      background: #eef5f8;
-      color: #17324d;
-      font-family: Arial, sans-serif;
-    }
-
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 Arial,sans-serif; }
     header {
-      background: #123b59;
-      color: white;
-      padding: 28px 20px;
-      text-align: center;
+      background:linear-gradient(180deg,#184b70 0%, #1f5f8a 100%);
+      color:#fff;
+      padding:36px 24px 26px;
+      box-shadow:0 2px 10px rgba(0,0,0,.08);
+      margin-bottom:24px;
     }
-
-    header h1 {
-      margin: 0 0 8px;
+    header .contenedor { max-width:1100px; margin:auto; }
+    header h1 { margin:0; font-size:48px; letter-spacing:-1px; text-align:center; }
+    header p { margin:4px 0 0; color:#e7f3fb; font-size:18px; text-align:center; }
+    main { max-width:1100px; margin:auto; padding:0 24px 32px; }
+    #estado { color:var(--muted); font-size:13px; margin-bottom:14px; }
+    .tarjetas { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .tarjeta,.panel {
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:var(--shadow);
     }
-
-    header p {
-      margin: 0;
-    }
-
-    main {
-      max-width: 1150px;
-      margin: 25px auto;
-      padding: 0 16px;
-    }
-
-    .tarjetas {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .tarjeta,
-    .panel {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 8px #16334a15;
-    }
-
-    .tarjeta h3 {
-      margin: 0 0 12px;
-      color: #52738b;
-      font-size: 15px;
-    }
-
-    .valor {
-      font-size: 29px;
-      font-weight: bold;
-      color: #0c6980;
-      overflow-wrap: anywhere;
-    }
-
-    .detalle {
-      font-size: 12px;
-      color: #61798a;
-      margin-top: 10px;
-    }
-
-    .panel {
-      margin-top: 20px;
-    }
-
-    .grafico {
-      position: relative;
-      height: 300px;
-    }
-
+    .tarjeta { border-left:8px solid var(--signal, #8da4b8); }
+    .tarjeta h3 { margin:0 0 10px; color:var(--muted); font-size:18px; font-weight:700; }
+    .valor { font-size:38px; font-weight:700; color:var(--signal,#73879b); overflow-wrap:anywhere; }
+    .detalle { color:var(--signal,#73879b); margin-top:6px; font-size:18px; }
+    .detalle::before { content:''; display:inline-block; width:12px; height:12px; border-radius:50%; background:currentColor; margin-right:8px; }
+    .referencia { color:var(--muted); margin-top:8px; font-size:15px; }
+    .panel { margin:18px 0; }
+    h2 { font-size:22px; margin:0 0 16px; } h3 { font-size:17px; }
+    .grafico { position:relative; height:360px; margin:16px 0; }
+    .controles { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    label { color:var(--muted); font-weight:700; }
     select {
-      padding: 6px;
-      margin: 4px 0 14px;
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:10px 15px;
+      flex:1;
+      min-width:100px;
+      font:inherit;
     }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th,td { text-align:left; padding:12px; border-bottom:1px solid #e4edf4; }
+    th { color:var(--muted); background:#f6fafc; }
+    .tabla-contenedor { overflow-x:auto; }
+    .aviso { color:var(--muted); font-size:13px; line-height:1.6; margin-top:22px; }
+    .verde { --signal:#17a34a; } .rojo { --signal:#dc2626; } .amarillo { --signal:#d97706; } .gris { --signal:#94a3b8; } .azul { --signal:#1992d4; }
+    #general {
+      color:var(--signal);
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-size:20px;
+      font-weight:700;
+      border-left:8px solid var(--signal);
+      background:linear-gradient(180deg,#ffffff 0%, var(--panel-2) 100%);
     }
-
-    th,
-    td {
-      text-align: left;
-      padding: 11px;
-      border-bottom: 1px solid #e2e8ee;
+    #general::before { content:'●'; font-size:28px; flex:none; }
+    #estadisticas { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .stat { padding:16px; background:#f8fbfd; border-radius:14px; border:1px solid #dbe7f0; }
+    .stat span { display:block; color:var(--muted); font-size:14px; }
+    .stat strong { display:block; font-size:26px; margin-top:4px; color:var(--text); }
+    #alertas { display:grid; gap:10px; }
+    .alerta {
+      padding:12px 14px;
+      border-left:4px solid var(--signal);
+      background:#f8fbfd;
+      border-radius:10px;
+      color:var(--signal);
+      border:1px solid #e1ebf2;
     }
-
-    th {
-      background: #eaf3f8;
-    }
-
-    .tabla-contenedor {
-      overflow-x: auto;
-    }
-
-    .aviso {
-      color: #7a4850;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .verde { border-left: 6px solid #15803d; }
-    .rojo { border-left: 6px solid #b91c1c; }
-    .amarillo { border-left: 6px solid #ca8a04; }
-    .gris { border-left: 6px solid #64748b; }
-    #estadisticas { line-height: 1.8; }
-    #estado {
-      color: #496b80;
+    @media(max-width:600px){
+      header h1{font-size:38px;}
+      header p{font-size:16px;}
+      main,header{padding-left:14px;padding-right:14px;}
+      .tarjeta,.panel{padding:16px;}
+      .valor{font-size:28px;}
+      .grafico{height:280px;}
+      .detalle,.referencia{font-size:13px;}
+      .tarjetas,#estadisticas{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -130,8 +110,10 @@
 <body>
 
 <header>
-  <h1>AquaSafe</h1>
-  <p>Dashboard de monitoreo de calidad del agua</p>
+  <div class="contenedor">
+    <h1>AquaSafe</h1>
+    <p>Dashboard de monitoreo de calidad del agua</p>
+  </div>
 </header>
 
 <main>
@@ -141,7 +123,7 @@
   </p>
 
   <section class="panel gris" id="general" role="status">Esperando muestra del ESP32</section>
-  <section class="panel"><h2>Alertas de la muestra actual</h2><div id="alertas">Sin datos</div></section>
+
   <!-- TARJETAS DE LOS CUATRO SENSORES -->
 
   <section class="tarjetas">
@@ -190,7 +172,7 @@
       que deseas visualizar.
     </p>
 
-    <label for="sensor">Sensor:</label>
+    <div class="controles"><label for="sensor">Sensor:</label>
 
     <select id="sensor">
       <option value="temperatura">Temperatura</option>
@@ -205,12 +187,16 @@
       <option value="">Sin datos</option>
     </select>
 
-    <p id="estadisticas"></p>
+    </div>
     <div class="grafico">
       <canvas id="grafico"></canvas>
     </div>
+    <h3 id="titulo-estadisticas">Estadísticas</h3>
+    <p id="meta-estadisticas" class="referencia"></p>
+    <div id="estadisticas"></div>
   </section>
 
+  <section class="panel"><h2>Alertas de la muestra actual</h2><div id="alertas">Sin datos</div></section>
   <!-- TABLA -->
 
   <section class="panel">
@@ -274,7 +260,7 @@
   }
   function evaluar(sensor, lectura) {
     if (!lectura) return ["gris","Sin medición válida o reciente"];
-    if (sensor === "temperatura") return ["gris","Informativa; sin umbral"];
+    if (sensor === "temperatura") return ["azul","Lectura informativa"];
     const r = reglas[sensor];
     if (lectura.unidad !== r.unidad) return ["amarillo","Sin conversión válida · "+r.texto];
     if (r.fuera(Number(lectura.valor))) return ["rojo","Fuera de referencia · "+r.texto];
@@ -340,10 +326,11 @@
         datasets: [{
           label: "Temperatura",
           data: [],
-          borderColor: "#087e99",
+          borderColor: "#0ea5e9",
+          borderWidth: 3,
           backgroundColor: "#087e9922",
-          tension: 0.3,
-          fill: true,
+          tension: 0,
+          fill: false,
           pointRadius: 3
         }]
       },
@@ -352,13 +339,15 @@
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: true
+            display: true, labels: {color:"#45627b"}
           }
         },
         scales: {
+          x: {ticks:{color:"#5e7892",maxTicksLimit:6},grid:{display:false}},
           y: {
+            ticks:{color:"#5e7892"}, grid:{color:"#d9e5ef"},
             title: {
-              display: true,
+              color:"#5e7892", display: true,
               text: "Valor"
             }
           }
@@ -380,16 +369,24 @@
       valor.textContent = ultima ? formatearValor(ultima) : "--";
       const [color, texto] = evaluar(sensor, ultima);
       valor.closest(".tarjeta").className = "tarjeta "+color;
-      document.getElementById("info-"+sensor).textContent = texto;
-      if (color === "rojo" || color === "amarillo" || !ultima) alertas.push(nombres[sensor]+": "+texto);
+      const info = document.getElementById("info-"+sensor);
+      info.textContent = texto.split(" · ")[0];
+      let ref = valor.closest(".tarjeta").querySelector(".referencia");
+      if (!ref) { ref = document.createElement("div"); ref.className = "referencia"; info.after(ref); }
+      ref.textContent = reglas[sensor] ? "Referencia: "+reglas[sensor].texto : "Sin umbral de calidad definido";
+      if (color === "rojo" || color === "amarillo" || !ultima) alertas.push({texto:nombres[sensor]+": "+texto,color});
     }
     const general = document.getElementById("general");
     const codigo = muestra ? Number(muestra.valor) : -1;
     const color = codigo===1 ? "verde" : [2,3,4].includes(codigo) ? "rojo" : codigo===5 ? "amarillo" : "gris";
     general.className = "panel "+color;
     general.textContent = "Estado fisicoquímico: "+(estados[codigo] || "Sin muestra reciente")+" (no certifica potabilidad)";
-    if (codigo===5) alertas.push("Revisar cobertura de los patrones de calibración");
-    document.getElementById("alertas").textContent = alertas.join(" | ") || "Sin alertas en la muestra actual";
+    if (codigo===5) alertas.push({texto:"Revisar cobertura de los patrones de calibración",color:"amarillo"});
+    const panelAlertas = document.getElementById("alertas");
+    panelAlertas.replaceChildren();
+    for (const a of alertas.length ? alertas : [{texto:"Sin alertas en la muestra actual",color:"verde"}]) {
+      const item = document.createElement("div"); item.className = "alerta "+a.color; item.textContent = a.texto; panelAlertas.appendChild(item);
+    }
   }
 
   // ========================================
@@ -467,12 +464,19 @@
     const media = n ? valores.reduce((a,b)=>a+b,0)/n : 0;
     const desv = n ? Math.sqrt(valores.reduce((a,b)=>a+(b-media)**2,0)/n) : 0;
     const f = v=>v.toLocaleString("es-CL",{maximumFractionDigits:3});
-    document.getElementById("estadisticas").textContent = n ?
-      `N=${n} | Promedio: ${f(media)} | Mínimo: ${f(Math.min(...valores))} | Máximo: ${f(Math.max(...valores))} | Desv. estándar poblacional: ${f(desv)} (${unidad || "sin unidad"})` : "Sin datos para calcular estadísticas";
+    document.getElementById("titulo-estadisticas").textContent = "Estadísticas — "+nombres[sensor];
+    document.getElementById("meta-estadisticas").textContent = `N = ${n} · ${unidad || "sin unidad"} · Historial disponible`;
+    const stats = document.getElementById("estadisticas"); stats.replaceChildren();
+    for (const [label,value] of [["Promedio",media],["Mínimo",Math.min(...valores)],["Máximo",Math.max(...valores)],["Desviación estándar poblacional",desv]]) {
+      const box = document.createElement("div"); box.className="stat";
+      const name = document.createElement("span"); name.textContent=label;
+      const num = document.createElement("strong"); num.textContent=n?f(value):"--";
+      box.append(name,num); stats.appendChild(box);
+    }
     const regla = reglas[sensor];
     grafico.data.datasets.splice(1);
     if (regla && unidad===regla.unidad && n) {
-      for (const limite of regla.limites) grafico.data.datasets.push({label:"Umbral "+limite, data:datos.map(()=>limite), borderColor:"#b91c1c", borderDash:[6,4], pointRadius:0, fill:false});
+      for (const limite of regla.limites) grafico.data.datasets.push({label:"Umbral: "+limite+" "+unidad, data:datos.map(()=>limite), borderColor:"#f87171", borderWidth:2, borderDash:[6,4], pointRadius:0, fill:false});
     }
     grafico.update();
   }

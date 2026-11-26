@@ -117,6 +117,11 @@
       line-height: 1.6;
     }
 
+    .verde { border-left: 6px solid #15803d; }
+    .rojo { border-left: 6px solid #b91c1c; }
+    .amarillo { border-left: 6px solid #ca8a04; }
+    .gris { border-left: 6px solid #64748b; }
+    #estadisticas { line-height: 1.8; }
     #estado {
       color: #496b80;
     }
@@ -136,6 +141,8 @@
     Conectando con el servidor...
   </p>
 
+  <section class="panel gris" id="general" role="status">Esperando muestra del ESP32</section>
+  <section class="panel"><h2>Alertas de la muestra actual</h2><div id="alertas">Sin datos</div></section>
   <!-- TARJETAS DE LOS CUATRO SENSORES -->
 
   <section class="tarjetas">
@@ -199,6 +206,7 @@
       <option value="">Sin datos</option>
     </select>
 
+    <p id="estadisticas"></p>
     <div class="grafico">
       <canvas id="grafico"></canvas>
     </div>
@@ -253,6 +261,26 @@
   };
 
   let lecturas = [];
+  let unidadElegida = false;
+  const reglas = {
+    ph: {unidad:"pH", limites:[6.5,8.5], texto:"6,5 a 8,5", fuera:v=>v<6.5||v>8.5},
+    turbidez: {unidad:"UNT", limites:[1], texto:"Menor que 1 UNT", fuera:v=>v>=1},
+    tds: {unidad:"ppm", limites:[600], texto:"Menor que 600 ppm (sabor)", fuera:v=>v>=600}
+  };
+  const estados = ["Datos incompletos", "En referencia parcial", "pH fuera de referencia", "Turbidez sobre meta", "TDS sobre referencia de sabor", "Revisar calibración"];
+  function muestraActual() {
+    const estado = lecturas.find(d=>d.sensor==="estado_agua" && d.unidad==="codigo");
+    if (!estado || Date.now()-new Date(estado.creado_en).getTime()>90000) return null;
+    return estado;
+  }
+  function evaluar(sensor, lectura) {
+    if (!lectura) return ["gris","Sin medición válida o reciente"];
+    if (sensor === "temperatura") return ["gris","Informativa; sin umbral"];
+    const r = reglas[sensor];
+    if (lectura.unidad !== r.unidad) return ["amarillo","Sin conversión válida · "+r.texto];
+    if (r.fuera(Number(lectura.valor))) return ["rojo","Fuera de referencia · "+r.texto];
+    return ["verde","Dentro de referencia · "+r.texto];
+  }
 
   // ========================================
   // FORMATEAR UN VALOR
@@ -345,18 +373,24 @@
   // ========================================
 
   function actualizarTarjetas() {
+    const muestra = muestraActual();
+    const alertas = [];
     for (const sensor of Object.keys(nombres)) {
-      const ultima = lecturas.find(
-        d => d.sensor === sensor
-      );
-
-      document.getElementById(sensor).textContent =
-        ultima ? formatearValor(ultima) : "--";
-
-      document.getElementById(
-        "info-" + sensor
-      ).textContent = descripcionMedicion(ultima);
+      const ultima = muestra && lecturas.find(d=>d.sensor===sensor && d.creado_en===muestra.creado_en);
+      const valor = document.getElementById(sensor);
+      valor.textContent = ultima ? formatearValor(ultima) : "--";
+      const [color, texto] = evaluar(sensor, ultima);
+      valor.closest(".tarjeta").className = "tarjeta "+color;
+      document.getElementById("info-"+sensor).textContent = texto;
+      if (color === "rojo" || color === "amarillo" || !ultima) alertas.push(nombres[sensor]+": "+texto);
     }
+    const general = document.getElementById("general");
+    const codigo = muestra ? Number(muestra.valor) : -1;
+    const color = codigo===1 ? "verde" : [2,3,4].includes(codigo) ? "rojo" : codigo===5 ? "amarillo" : "gris";
+    general.className = "panel "+color;
+    general.textContent = "Estado fisicoquímico: "+(estados[codigo] || "Sin muestra reciente")+" (no certifica potabilidad)";
+    if (codigo===5) alertas.push("Revisar cobertura de los patrones de calibración");
+    document.getElementById("alertas").textContent = alertas.join(" | ") || "Sin alertas en la muestra actual";
   }
 
   // ========================================
@@ -389,10 +423,10 @@
       selector.add(new Option(texto, unidad));
     }
 
-    if (unidades.includes(anterior)) {
+    if (unidadElegida && unidades.includes(anterior)) {
       selector.value = anterior;
     } else {
-      selector.value = unidades[0];
+      selector.value = unidades.includes(reglas[sensor]?.unidad) ? reglas[sensor].unidad : unidades[0];
     }
   }
 
@@ -429,6 +463,18 @@
     grafico.options.scales.y.title.text =
       unidad || "Unidad no informada";
 
+    const valores = datos.map(d=>Number(d.valor)).filter(Number.isFinite);
+    const n = valores.length;
+    const media = n ? valores.reduce((a,b)=>a+b,0)/n : 0;
+    const desv = n ? Math.sqrt(valores.reduce((a,b)=>a+(b-media)**2,0)/n) : 0;
+    const f = v=>v.toLocaleString("es-CL",{maximumFractionDigits:3});
+    document.getElementById("estadisticas").textContent = n ?
+      `N=${n} | Promedio: ${f(media)} | Mínimo: ${f(Math.min(...valores))} | Máximo: ${f(Math.max(...valores))} | Desv. estándar poblacional: ${f(desv)} (${unidad || "sin unidad"})` : "Sin datos para calcular estadísticas";
+    const regla = reglas[sensor];
+    grafico.data.datasets.splice(1);
+    if (regla && unidad===regla.unidad && n) {
+      for (const limite of regla.limites) grafico.data.datasets.push({label:"Umbral "+limite, data:datos.map(()=>limite), borderColor:"#b91c1c", borderDash:[6,4], pointRadius:0, fill:false});
+    }
     grafico.update();
   }
 
@@ -440,7 +486,7 @@
     const tabla = document.getElementById("tabla");
     tabla.replaceChildren();
 
-    for (const lectura of lecturas.slice(0, 30)) {
+    for (const lectura of lecturas.filter(d=>d.sensor!=="estado_agua").slice(0, 30)) {
       const fila = document.createElement("tr");
 
       const valores = [
@@ -470,7 +516,7 @@
   async function actualizarDatos() {
     try {
       const respuesta = await fetch(
-        "/api/lecturas?limite=500",
+        "/api/lecturas?limite=500&dispositivo=AquaSafe-01",
         { cache: "no-store" }
       );
 
@@ -499,6 +545,11 @@
 
     } catch (error) {
       console.error(error);
+      lecturas = [];
+      actualizarTarjetas();
+      actualizarUnidades();
+      actualizarGrafico();
+      actualizarTabla();
 
       document.getElementById("estado").textContent =
         "Sin conexión con el servidor o la base de datos.";
@@ -511,12 +562,13 @@
 
   document.getElementById("sensor")
     .addEventListener("change", () => {
+      unidadElegida = false;
       actualizarUnidades();
       actualizarGrafico();
     });
 
   document.getElementById("unidad")
-    .addEventListener("change", actualizarGrafico);
+    .addEventListener("change", () => { unidadElegida = true; actualizarGrafico(); });
 
   // Cargar datos y actualizar cada 5 segundos.
   actualizarDatos();
